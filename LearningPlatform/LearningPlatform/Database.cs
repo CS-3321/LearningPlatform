@@ -29,20 +29,10 @@ namespace LearningPlatform
         public static void CreateFiles() // These methods make sure all Data files exists
         {
 
-            string fileName = String.Format(@"{0}\TeacherLogins.txt", Application.StartupPath); // Creates a filepath for data file, replace "Logins" with desired filename
-
+            string fileName = String.Format(@"{0}\UserLogins.txt", Application.StartupPath); // Creates a filepath for data file, replace "Logins" with desired filename
             
-
             if(!File.Exists(fileName)) // Checks if the file exists
                 File.Create(fileName); // If it does not exist, make it
-            else
-            {
-                // TODO: Read from the file into the Database
-            }
-
-            fileName = String.Format(@"{0}\StudentLogins.txt", Application.StartupPath);
-            if (!File.Exists(fileName)) 
-                File.Create(fileName);
             else
             {
                 // TODO: Read from the file into the Database
@@ -51,13 +41,13 @@ namespace LearningPlatform
 
         public static bool AddTeacher(string _user, string _pass, string _fName, string _lName)
         {
-            string fileName = String.Format(@"{0}\TeacherLogins.txt", Application.StartupPath);
+            string fileName = String.Format(@"{0}\UserLogins.txt", Application.StartupPath);
             
-            if (users.ContainsKey(_user)) // If the that email is already registered, let the user know
+            if (users.ContainsKey(_user)) // If the that username is already registered, let the user know
                 return false;
             // Otherwise register the teacher
             User newUser = new User(_user, _pass, _fName, _lName, "", true); // Creates a teacher with no classes
-            users.Add(_user, newUser); // Adds the teacher to the List of teachers
+            users.Add(_user, newUser); // Adds the teacher to the List of users
             // Now Store in file
             File.AppendAllText(fileName, newUser.Encoded()+"|");
             
