@@ -42,7 +42,7 @@ namespace LearningPlatform
                 }
                 else
                 {
-                    if (!Database.addTeacher(email_text.Text, pass_text.Text, fName_text.Text, lName_text.Text))
+                    if (!Database.AddTeacher(email_text.Text, pass_text.Text, fName_text.Text, lName_text.Text))
                         System.Windows.Forms.MessageBox.Show("That email is already taken!\nTry logging in instead?");
                     else
                     {

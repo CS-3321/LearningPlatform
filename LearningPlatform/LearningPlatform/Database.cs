@@ -6,27 +6,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace LearningPlatform
 {
     public static class Database
     {
-        private static Dictionary<string,Teacher> teachers; // stores all the teachers, lets you find them by just the email
-        private static Dictionary<string, Student> students; // stores all the students, lets you find them by just the student ID
+        private static Dictionary<string,User> users; // stores all the teachers, lets you find them by just the email
+        private static Dictionary<string, SchoolClass> classes; // stores all classes, find them with class name
+        private static List<string> classNames; // stores all the names of classes (Due to each class having it's own file)
 
-        public static bool isTeacher;
-        public static Teacher currentTeacher;
-        public static Student currentStudent;
+        public static bool isTeacher; // Keeps track of if the current user is a teacher
+        public static User currentUser; // Keeps track of the curreent user logged in
+        public static List<SchoolClass> currentClasses; // When user logs in, find all the classes they are in, and store them here
+        
 
         static Database()
         {
-            teachers = new Dictionary<string, Teacher>(); // Create static Dictionary in static constructor to properly save values
-            students = new Dictionary<string, Student>();
+            users = new Dictionary<string, User>(); // Create static Dictionary in static constructor to properly save values
+            classes = new Dictionary<string, SchoolClass>();
         }
 
-        public static void createFiles() // These methods make sure all Data files exists
+        public static void CreateFiles() // These methods make sure all Data files exists
         {
 
             string fileName = String.Format(@"{0}\TeacherLogins.txt", Application.StartupPath); // Creates a filepath for data file, replace "Logins" with desired filename
@@ -49,39 +49,41 @@ namespace LearningPlatform
             }
         }
 
-        public static bool addTeacher(string _email, string _pass, string _fName, string _lName)
+        public static bool AddTeacher(string _user, string _pass, string _fName, string _lName)
         {
             string fileName = String.Format(@"{0}\TeacherLogins.txt", Application.StartupPath);
             
-            if (teachers.ContainsKey(_email)) // If the that email is already registered, let the user know
+            if (users.ContainsKey(_user)) // If the that email is already registered, let the user know
                 return false;
             // Otherwise register the teacher
-            Teacher newTeacher = new Teacher(_email, _pass, _fName, _lName); // Creates a teacher
-            teachers.Add(_email, newTeacher); // Adds the teacher to the List of teachers
+            User newUser = new User(_user, _pass, _fName, _lName, "", true); // Creates a teacher with no classes
+            users.Add(_user, newUser); // Adds the teacher to the List of teachers
             // Now Store in file
-            File.AppendAllText(fileName, newTeacher.encoded()+"|");
+            File.AppendAllText(fileName, newUser.Encoded()+"|");
             
             return true;
         }
 
-        public static bool checkTeacherLogin(string _email, string _pass) // Checks if email and password are correct
+        public static bool CheckTeacherLogin(string _user, string _pass) // Checks if email and password are correct
         {
-            return (teachers.ContainsKey(_email) && teachers[_email].password == _pass);
+            // checks if user exists, if they do, checks if their password is correct, if it is, checks if they are a teacher
+            return (users.ContainsKey(_user) && users[_user].password == _pass && users[_user].isTeacher); 
             
         }
-        public static bool checkStudentLogin(string _id, string _pass) // Checks if id and password are correct
+        public static bool CheckStudentLogin(string _user, string _pass) // Checks if id and password are correct
         {
-            return (students.ContainsKey(_id) && students[_id].password == _pass);
+            // checks if user exists, if they do, checks if their password is correct, if it is, checks if they are a student
+            return (users.ContainsKey(_user) && users[_user].password == _pass && !users[_user].isTeacher);
         }
-        public static void setTeacher(string _email) // Sets which teacher is logged in
+        public static void SetTeacher(string _user) // Sets which teacher is logged in
         {
             isTeacher = true;
-            currentTeacher = teachers[_email];
+            currentUser = users[_user];
         }
-        public static void setStudent(string _id) // Sets which student is logged in
+        public static void SetStudent(string _user) // Sets which student is logged in
         {
             isTeacher = false;
-            currentStudent = students[_id];
+            currentUser = users[_user];
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LearningPlatform
 {
    
-    public class Teacher 
+    public class Teacher // Depreciated (No longer in use)
     {
         public string email;
         public string password;

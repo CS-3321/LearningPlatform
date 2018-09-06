@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database.cs" />
+    <Compile Include="Grade.cs" />
     <Compile Include="MainPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,9 +68,11 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="SchoolClass.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="theme.cs" />
+    <Compile Include="User.cs" />
     <EmbeddedResource Include="MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>
     </EmbeddedResource>

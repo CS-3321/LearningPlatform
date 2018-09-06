@@ -16,14 +16,14 @@ namespace LearningPlatform
         public Form1()
         {
             InitializeComponent();
-            Database.createFiles();
+            Database.CreateFiles();
         }
 
         private void ambiance_Button_21_Click(object sender, EventArgs e) // Teacher Login Button
         {
-            if(Database.checkTeacherLogin(Username_Text.Text, Password_Text.Text)) // If teachers email and password are correct, login
+            if(Database.CheckTeacherLogin(Username_Text.Text, Password_Text.Text)) // If teachers email and password are correct, login
             {
-                Database.setTeacher(Username_Text.Text);
+                Database.SetTeacher(Username_Text.Text);
                 login();
             }
             else
@@ -37,9 +37,9 @@ namespace LearningPlatform
 
         private void StudentLogin_Click(object sender, EventArgs e)
         {
-            if (Database.checkStudentLogin(Username_Text.Text, Password_Text.Text)) // If students id and password are correct, login
+            if (Database.CheckStudentLogin(Username_Text.Text, Password_Text.Text)) // If students id and password are correct, login
             {
-                Database.setStudent(Username_Text.Text);
+                Database.SetStudent(Username_Text.Text);
                 login();
             }
             else
