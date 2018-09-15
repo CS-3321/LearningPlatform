@@ -23,6 +23,12 @@ namespace LearningPlatform
 
         public SchoolClass() // This constructor should be used for loading a SchoolClass
         {
+            // Initialize the user and store them in the list.
+            User user;
+            students = new List<User>(user);
+            
+            // Store all users in the .txt file UserLogins.
+            string folderName = @"c:\UserLogins";
             
         }
 
