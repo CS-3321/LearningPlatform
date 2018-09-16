@@ -23,13 +23,13 @@ namespace LearningPlatform
 
         public SchoolClass() // This constructor should be used for loading a SchoolClass
         {
-            // Initialize the user and store them in the list.
-            User user;
-            students = new List<User>(user);
-            
-            // Store all users in the .txt file UserLogins.
-            string folderName = @"c:\UserLogins";
-            
+            // Read the contents in UserLogins into a string variable.
+            string usersText = System.IO.File.ReadAllText(@"C:\Users\Public\TestFolder\UserLogins.txt");
+           
+            // Create a User variable and store all the users' info in the user list.
+            User users;
+            users.Add(new User(usersText));
+            List<User>(usersText);
         }
 
         public int[] getGrades(User _user) // returns an array of intergers that represent a user's grades
