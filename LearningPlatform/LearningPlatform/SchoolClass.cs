@@ -23,9 +23,8 @@ namespace LearningPlatform
 
         public SchoolClass(string info) // This constructor should be used for loading a SchoolClass
         {
-            // TODO: Write a constructor that gets all the info for the schoolClass in a single string (Shown above, named info) and parse it to
-            //       fill out all the info in this class, ei. className, classId, teacher, students, grades.
-           
+            // TODO: Create overloaded constructor
+
             // Create a User variable and store all the users' info in the user list.
             User users;
             users.Add(new User(usersText));
