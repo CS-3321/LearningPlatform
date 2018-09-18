@@ -18,38 +18,46 @@ namespace LearningPlatform
         public static bool isTeacher; // Keeps track of if the current user is a teacher
         public static User currentUser; // Keeps track of the curreent user logged in
         public static List<SchoolClass> currentClasses; // When user logs in, find all the classes they are in, and store them here
-        
+
+        public static string userFileName;
+        public static string classFileName;
+
+
 
         static Database()
         {
             users = new Dictionary<string, User>(); // Create static Dictionary in static constructor to properly save values
             classes = new Dictionary<string, SchoolClass>();
+            userFileName = String.Format(@"{0}\UserLogins.txt", Application.StartupPath); // Creates a filepath for User data file
+            classFileName = String.Format(@"{0}\ClassNames.txt", Application.StartupPath); // Creates a filepath for Class data file
         }
 
         public static void CreateFiles() // These methods make sure all Data files exists
         {
-
-            string fileName = String.Format(@"{0}\UserLogins.txt", Application.StartupPath); // Creates a filepath for data file, replace "Logins" with desired filename
-            
-            if(!File.Exists(fileName)) // Checks if the file exists
-                File.Create(fileName); // If it does not exist, make it
+            if(!File.Exists(userFileName)) // Checks if the file exists
+                File.Create(userFileName); // If it does not exist, make it
             else
             {
-                // TODO: Read from the file into the Database
+                string usersText = File.ReadAllText(userFileName); // Read in all data
+                string[] _allUsers = usersText.Split('|'); // Split the data properly, store in an array
+                User _tempUser = null; // Blank temp user
+                foreach (string _userInfo in _allUsers) // Go through all the info
+                {
+                    _tempUser = new User(_userInfo); // Create the new User
+                    users.Add(_tempUser.username, _tempUser); // Add the user to the Dictonary(A list that stores 2 things together) name, User
+                }
             }
         }
 
         public static bool AddTeacher(string _user, string _pass, string _fName, string _lName)
         {
-            string fileName = String.Format(@"{0}\UserLogins.txt", Application.StartupPath);
-            
             if (users.ContainsKey(_user)) // If the that username is already registered, let the user know
                 return false;
             // Otherwise register the teacher
             User newUser = new User(_user, _pass, _fName, _lName, "", true); // Creates a teacher with no classes
             users.Add(_user, newUser); // Adds the teacher to the List of users
             // Now Store in file
-            File.AppendAllText(fileName, newUser.Encoded()+"|");
+            File.AppendAllText(userFileName, newUser.Encoded()+"|");
             
             return true;
         }

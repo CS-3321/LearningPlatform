@@ -21,10 +21,10 @@ namespace LearningPlatform
             grades = new Dictionary<User, Grade>();
         }
 
-        public SchoolClass() // This constructor should be used for loading a SchoolClass
+        public SchoolClass(string info) // This constructor should be used for loading a SchoolClass
         {
-            // Read the contents in UserLogins into a string variable.
-            string usersText = System.IO.File.ReadAllText(@"C:\Users\Public\TestFolder\UserLogins.txt");
+            // TODO: Write a constructor that gets all the info for the schoolClass in a single string (Shown above, named info) and parse it to
+            //       fill out all the info in this class, ei. className, classId, teacher, students, grades.
            
             // Create a User variable and store all the users' info in the user list.
             User users;
