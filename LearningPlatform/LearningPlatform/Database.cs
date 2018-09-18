@@ -34,7 +34,7 @@ namespace LearningPlatform
 
         public static void CreateFiles() // These methods make sure all Data files exists
         {
-            if(!File.Exists(userFileName)) // Checks if the file exists
+            if(!File.Exists(userFileName)) // Checks if the User file exists
                 File.Create(userFileName); // If it does not exist, make it
             else
             {
@@ -47,6 +47,18 @@ namespace LearningPlatform
                     users.Add(_tempUser.username, _tempUser); // Add the user to the Dictonary(A list that stores 2 things together) name, User
                 }
             }
+
+            if (!File.Exists(classFileName)) // Checks if the Class file exists
+                File.Create(classFileName); // If it does not exist, make it
+            else
+            {
+                string classText = File.ReadAllText(classFileName); // Read in all data
+                string[] _allClasses = classText.Split('|'); // Split the data properly, store in an array
+                classNames = new List<string>(_allClasses); // Since we just need to turn an array into a list, we can just pass the array
+                                                            // when creating the List.
+            }
+
+            // TODO: Read in all class files based on class names in the classNames List, store them in the classes Dictonary
         }
 
         public static bool AddTeacher(string _user, string _pass, string _fName, string _lName)
