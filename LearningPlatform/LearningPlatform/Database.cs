@@ -58,7 +58,7 @@ namespace LearningPlatform
                                                             // when creating the List.
             }
 
-            // TODO: Read in all class files based on class names in the classNames List, store them in the classes Dictonary
+            // TODO: Read in all class files based on class names in the classNames List, store them in the classes Dictionary
         }
 
         public static bool AddTeacher(string _user, string _pass, string _fName, string _lName)
