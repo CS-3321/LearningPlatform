@@ -28,6 +28,8 @@ namespace LearningPlatform
             users.Add(new User(usersText));
             List<User>(usersText);
             
+            // Write the info to a file.
+            System.IO.File.WriteAllText(@"C:\Users\Public\TestFolder\WriteLines.txt", info);
         }
 
         public int[] getGrades(User _user) // returns an array of intergers that represent a user's grades
