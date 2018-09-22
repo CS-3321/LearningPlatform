@@ -23,12 +23,11 @@ namespace LearningPlatform
 
         public SchoolClass(string info) // This constructor should be used for loading a SchoolClass
         {
-            // TODO: Create overloaded constructor
-
             // Create a User variable and store all the users' info in the user list.
             User users;
             users.Add(new User(usersText));
             List<User>(usersText);
+            
         }
 
         public int[] getGrades(User _user) // returns an array of intergers that represent a user's grades
