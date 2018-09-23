@@ -23,13 +23,19 @@ namespace LearningPlatform
 
         public SchoolClass(string info) // This constructor should be used for loading a SchoolClass
         {
-            // Create a User variable and store all the users' info in the user list.
-            User users;
-            users.Add(new User(usersText));
-            List<User>(usersText);
+            // Parse the class names.
+            info = className;
+            string[] allClassNames = info.Split('&');
             
-            // Write the info to a file.
-            System.IO.File.WriteAllText(@"C:\Users\Public\TestFolder\WriteLines.txt", info);
+            // Parse the class IDs.
+            info = classID;
+            string[] allClassIDs = info.Split('&');
+            
+            // Parse the teachers.
+            User teachers = teacher;
+            
+            // Parse the students.
+            
         }
 
         public int[] getGrades(User _user) // returns an array of intergers that represent a user's grades
