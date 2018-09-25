@@ -23,19 +23,17 @@ namespace LearningPlatform
 
         public SchoolClass(string info) // This constructor should be used for loading a SchoolClass
         {
+            // Info example "CS-3321&107298&jones@gmail.com&993251!60^45^99^43^88#993251!60^45^99^43^88"
+
             // Parse the class names.
             info = className;
-            string[] allClassNames = info.Split('&');
-            
-            // Parse the class IDs.
-            info = classID;
-            string[] allClassIDs = info.Split('&');
-            
-            // Parse the teachers.
-            User teachers = teacher;
-            
+            string[] allInfo = info.Split('&');
+            className = allInfo[0];
+            classID = allInfo[1];
+            teacher = Database.users[allInfo[2]];
+            // all students in allInfo[3]
             // Parse the students.
-            
+          //  grades.Add(USER HERE, new Grade(GRADE STRING HERE));
         }
 
         public int[] getGrades(User _user) // returns an array of intergers that represent a user's grades
