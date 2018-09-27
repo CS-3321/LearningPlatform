@@ -74,7 +74,7 @@
             this.exit_button.Location = new System.Drawing.Point(447, 260);
             this.exit_button.Name = "exit_button";
             this.exit_button.Size = new System.Drawing.Size(92, 30);
-            this.exit_button.TabIndex = 7;
+            this.exit_button.TabIndex = 5;
             this.exit_button.Text = "Exit";
             this.exit_button.TextAlignment = System.Drawing.StringAlignment.Center;
             this.exit_button.Click += new System.EventHandler(this.exit_button_Click_1);
@@ -102,7 +102,7 @@
             this.Password_Text.Name = "Password_Text";
             this.Password_Text.ReadOnly = false;
             this.Password_Text.Size = new System.Drawing.Size(313, 28);
-            this.Password_Text.TabIndex = 5;
+            this.Password_Text.TabIndex = 1;
             this.Password_Text.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.Password_Text.UseSystemPasswordChar = false;
             // 
@@ -129,7 +129,7 @@
             this.Username_Text.Name = "Username_Text";
             this.Username_Text.ReadOnly = false;
             this.Username_Text.Size = new System.Drawing.Size(313, 28);
-            this.Username_Text.TabIndex = 3;
+            this.Username_Text.TabIndex = 0;
             this.Username_Text.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.Username_Text.UseSystemPasswordChar = false;
             // 
@@ -142,7 +142,7 @@
             this.RegisterButton.Location = new System.Drawing.Point(184, 227);
             this.RegisterButton.Name = "RegisterButton";
             this.RegisterButton.Size = new System.Drawing.Size(177, 30);
-            this.RegisterButton.TabIndex = 2;
+            this.RegisterButton.TabIndex = 4;
             this.RegisterButton.Text = "Register As Teacher";
             this.RegisterButton.TextAlignment = System.Drawing.StringAlignment.Center;
             this.RegisterButton.Click += new System.EventHandler(this.RegisterButton_Click);
@@ -156,7 +156,7 @@
             this.TeacherLogin.Location = new System.Drawing.Point(76, 172);
             this.TeacherLogin.Name = "TeacherLogin";
             this.TeacherLogin.Size = new System.Drawing.Size(177, 30);
-            this.TeacherLogin.TabIndex = 1;
+            this.TeacherLogin.TabIndex = 3;
             this.TeacherLogin.Text = "Login As Teacher";
             this.TeacherLogin.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TeacherLogin.Click += new System.EventHandler(this.ambiance_Button_21_Click);
@@ -170,7 +170,7 @@
             this.StudentLogin.Location = new System.Drawing.Point(304, 172);
             this.StudentLogin.Name = "StudentLogin";
             this.StudentLogin.Size = new System.Drawing.Size(177, 30);
-            this.StudentLogin.TabIndex = 0;
+            this.StudentLogin.TabIndex = 2;
             this.StudentLogin.Text = "Login As Student";
             this.StudentLogin.TextAlignment = System.Drawing.StringAlignment.Center;
             this.StudentLogin.Click += new System.EventHandler(this.StudentLogin_Click);

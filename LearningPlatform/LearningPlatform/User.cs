@@ -33,7 +33,7 @@ namespace LearningPlatform
             firstName = allInfo[2];
             lastName = allInfo[3];
             classes = allInfo[4];
-            isTeacher = allInfo[5].Equals("true"); // Turns the string "True" or the string "False" into the actual bool value
+            isTeacher = allInfo[5].Equals("True"); // Turns the string "True" or the string "False" into the actual bool value
         }
         public string Encoded() // stores all data in a single string
         {
