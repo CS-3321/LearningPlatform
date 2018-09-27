@@ -30,6 +30,7 @@ namespace LearningPlatform
             classes = new Dictionary<string, SchoolClass>();
             userFileName = String.Format(@"{0}\UserLogins.txt", Application.StartupPath); // Creates a filepath for User data file
             classFileName = String.Format(@"{0}\ClassNames.txt", Application.StartupPath); // Creates a filepath for Class data file
+            currentClasses = new List<SchoolClass>();
         }
 
         public static void CreateFiles() // These methods make sure all Data files exists
@@ -39,23 +40,34 @@ namespace LearningPlatform
             else
             {
                 string usersText = File.ReadAllText(userFileName); // Read in all data
-                string[] _allUsers = usersText.Split('|'); // Split the data properly, store in an array
-                User _tempUser = null; // Blank temp user
-                foreach (string _userInfo in _allUsers) // Go through all the info
+                if (usersText.Contains('|')) // Makes sure there is atleast one user
                 {
-                    _tempUser = new User(_userInfo); // Create the new User
-                    users.Add(_tempUser.username, _tempUser); // Add the user to the Dictonary(A list that stores 2 things together) name, User
+                    usersText = usersText.Substring(0, usersText.Length - 1); // gets rid of the last '|' to avoid empty user
+                    string[] _allUsers = usersText.Split('|'); // Split the data properly, store in an array
+                    User _tempUser = null; // Blank temp user
+                    foreach (string _userInfo in _allUsers) // Go through all the info
+                    {
+                        _tempUser = new User(_userInfo); // Create the new User
+                        users.Add(_tempUser.username, _tempUser); // Add the user to the Dictonary(A list that stores 2 things together) name, User
+                    }
                 }
+                
             }
 
             if (!File.Exists(classFileName)) // Checks if the Class file exists
                 File.Create(classFileName); // If it does not exist, make it
             else
             {
+
                 string classText = File.ReadAllText(classFileName); // Read in all data
-                string[] _allClasses = classText.Split('|'); // Split the data properly, store in an array
-                classNames = new List<string>(_allClasses); // Since we just need to turn an array into a list, we can just pass the array
-                                                            // when creating the List.
+                if (classText.Contains('|')) // Makes sure there is atleast one class
+                {
+                    classText = classText.Substring(0, classText.Length - 1); // gets rid of the last '|' to avoid empty class
+                    string[] _allClasses = classText.Split('|'); // Split the data properly, store in an array
+                    classNames = new List<string>(_allClasses); // Since we just need to turn an array into a list, we can just pass the array
+                                                                // when creating the List.
+                }
+
             }
 
             // TODO: Read in all class files based on class names in the classNames List, store them in the classes Dictionary
