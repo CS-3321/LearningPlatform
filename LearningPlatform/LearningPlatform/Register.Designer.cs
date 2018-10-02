@@ -78,7 +78,7 @@
             this.cancel_button.Location = new System.Drawing.Point(154, 340);
             this.cancel_button.Name = "cancel_button";
             this.cancel_button.Size = new System.Drawing.Size(70, 30);
-            this.cancel_button.TabIndex = 9;
+            this.cancel_button.TabIndex = 5;
             this.cancel_button.Text = "Cancel";
             this.cancel_button.TextAlignment = System.Drawing.StringAlignment.Center;
             this.cancel_button.Click += new System.EventHandler(this.cancel_button_Click);
@@ -94,7 +94,7 @@
             this.fName_text.Name = "fName_text";
             this.fName_text.ReadOnly = false;
             this.fName_text.Size = new System.Drawing.Size(135, 28);
-            this.fName_text.TabIndex = 8;
+            this.fName_text.TabIndex = 2;
             this.fName_text.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.fName_text.UseSystemPasswordChar = false;
             // 
@@ -107,7 +107,7 @@
             this.fName_label.Location = new System.Drawing.Point(94, 193);
             this.fName_label.Name = "fName_label";
             this.fName_label.Size = new System.Drawing.Size(86, 20);
-            this.fName_label.TabIndex = 7;
+            this.fName_label.TabIndex = 8;
             this.fName_label.Text = "First Name";
             this.fName_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -122,7 +122,7 @@
             this.lName_text.Name = "lName_text";
             this.lName_text.ReadOnly = false;
             this.lName_text.Size = new System.Drawing.Size(135, 28);
-            this.lName_text.TabIndex = 6;
+            this.lName_text.TabIndex = 3;
             this.lName_text.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.lName_text.UseSystemPasswordChar = false;
             // 
@@ -137,7 +137,7 @@
             this.pass_text.Name = "pass_text";
             this.pass_text.ReadOnly = false;
             this.pass_text.Size = new System.Drawing.Size(135, 28);
-            this.pass_text.TabIndex = 5;
+            this.pass_text.TabIndex = 1;
             this.pass_text.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.pass_text.UseSystemPasswordChar = false;
             // 
@@ -152,7 +152,7 @@
             this.email_text.Name = "email_text";
             this.email_text.ReadOnly = false;
             this.email_text.Size = new System.Drawing.Size(135, 28);
-            this.email_text.TabIndex = 4;
+            this.email_text.TabIndex = 0;
             this.email_text.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.email_text.UseSystemPasswordChar = false;
             // 
@@ -165,7 +165,7 @@
             this.lName_label.Location = new System.Drawing.Point(94, 259);
             this.lName_label.Name = "lName_label";
             this.lName_label.Size = new System.Drawing.Size(84, 20);
-            this.lName_label.TabIndex = 3;
+            this.lName_label.TabIndex = 9;
             this.lName_label.Text = "Last Name";
             this.lName_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -178,7 +178,7 @@
             this.pass_label.Location = new System.Drawing.Point(99, 127);
             this.pass_label.Name = "pass_label";
             this.pass_label.Size = new System.Drawing.Size(76, 20);
-            this.pass_label.TabIndex = 2;
+            this.pass_label.TabIndex = 7;
             this.pass_label.Text = "Password";
             this.pass_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -191,7 +191,7 @@
             this.email_label.Location = new System.Drawing.Point(115, 56);
             this.email_label.Name = "email_label";
             this.email_label.Size = new System.Drawing.Size(47, 20);
-            this.email_label.TabIndex = 1;
+            this.email_label.TabIndex = 6;
             this.email_label.Text = "Email";
             this.email_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.email_label.Click += new System.EventHandler(this.ambiance_HeaderLabel1_Click);
@@ -205,7 +205,7 @@
             this.register_button.Location = new System.Drawing.Point(53, 340);
             this.register_button.Name = "register_button";
             this.register_button.Size = new System.Drawing.Size(95, 30);
-            this.register_button.TabIndex = 0;
+            this.register_button.TabIndex = 4;
             this.register_button.Text = "Register";
             this.register_button.TextAlignment = System.Drawing.StringAlignment.Center;
             this.register_button.Click += new System.EventHandler(this.register_button_Click);
