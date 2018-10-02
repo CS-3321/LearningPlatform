@@ -48,7 +48,8 @@ namespace LearningPlatform
                     foreach (string _userInfo in _allUsers) // Go through all the info
                     {
                         _tempUser = new User(_userInfo); // Create the new User
-                        users.Add(_tempUser.username, _tempUser); // Add the user to the Dictonary(A list that stores 2 things together) name, User
+                        if(!users.ContainsKey(_tempUser.username))
+                          users.Add(_tempUser.username, _tempUser); // Add the user to the Dictonary(A list that stores 2 things together) name, User
                     }
                 }
                 
