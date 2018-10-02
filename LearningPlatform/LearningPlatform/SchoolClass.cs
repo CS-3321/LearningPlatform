@@ -14,9 +14,11 @@ namespace LearningPlatform
         public List<User> students; // Stores all students
         public Dictionary<User, Grade> grades; // lets you find a grade based on a user (REMINDER: Database class is storing current user!)
 
-        public SchoolClass(User t) // When making a class, only a teacher is needed at the start
+        public SchoolClass(string _className, string _classID, User _teacher) // When making a class, provide className, classID, and the Teacher
         {
-            teacher = t;
+            className = _className;
+            classID = _classID;
+            teacher = _teacher;
             students = new List<User>();
             grades = new Dictionary<User, Grade>();
         }
