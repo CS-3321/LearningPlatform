@@ -12,11 +12,14 @@ namespace LearningPlatform
 {
     public partial class MainPage : Form
     {
+
+        List<TabPage> allTabs;
+
         public MainPage()
         {
             InitializeComponent();
-
-            updateUI();
+            allTabs = new List<TabPage>();
+            UpdateUI();
         }
 
         private void exit_button_Click(object sender, EventArgs e) // Depreciated
@@ -24,13 +27,13 @@ namespace LearningPlatform
             Application.Exit(); // Exits when exit button is clicked
         }
 
-        public void updateUI()
+        public void UpdateUI()
         {
-            changeForTeacher();
-            addTabs();
+            ChangeForTeacher();
+            AddTabs();
         }
 
-        public void changeForTeacher()
+        public void ChangeForTeacher()
         {
             if (Database.isTeacher)
             {
@@ -50,25 +53,56 @@ namespace LearningPlatform
             }
         }
 
-        public void addTabs()
+        public void AddTabs()
         {
-            TabPage temp = null;
+            TabPage tab = null;
             int count = 0;
+
+            #region testing
+            Database.currentClasses.Add(new SchoolClass("CS_2410", "930873", Database.currentUser));
+            Database.currentClasses.Add(new SchoolClass("MATH_3520", "171120", Database.currentUser));
+            #endregion
+
             foreach (SchoolClass classTab in Database.currentClasses) // WIP: Adding tabs equal to number of classes
             {
-                temp = new System.Windows.Forms.TabPage();
-                temp.Text = classTab.className;
-                temp.Size = new System.Drawing.Size(256, 214);
-                temp.TabIndex = count;
+                tab = new System.Windows.Forms.TabPage // Create a new tab with className
+                {
+                    Text = classTab.className,
+                    Size = new System.Drawing.Size(256, 214),
+                    TabIndex = count
+                };
+                
+                allTabs.Add(tab); // Store all tabs in a list
+                classTabs.Controls.Add(tab); // Add tab to display
+                Label teacherLabel = new Label
+                {
+                    AutoSize = true,
+                    Location = new System.Drawing.Point(16, 7),
+                    Name = "teacherLabel" + count,
+                    Font = new Font("Segoe UI", 12.0f, FontStyle.Bold),
+                    Size = new System.Drawing.Size(43, 90),
+                    Text = ("Teacher : " + Database.currentClasses[count].teacher.firstName + " " + Database.currentClasses[count].teacher.lastName)
+                };
+                Label classIDLabel = new Label
+                {
+                    AutoSize = true,
+                    Location = new System.Drawing.Point(16, 27),
+                    Name = "teacherLabel" + count,
+                    Font = new Font("Segoe UI", 12.0f, FontStyle.Regular),
+                    Size = new System.Drawing.Size(43, 13),
+                    Text = ("Class ID  : " + Database.currentClasses[count].classID)
+                };
+                tab.Controls.Add(teacherLabel);
+                tab.Controls.Add(classIDLabel);
                 count++;
-                classTabs.Controls.Add(temp);
             }
         }
+        
 
         private void TESTERBUTTON_Click(object sender, EventArgs e)
         {
             Database.isTeacher = !Database.isTeacher;
-            changeForTeacher();
+            ChangeForTeacher();
         }
     }
 }
