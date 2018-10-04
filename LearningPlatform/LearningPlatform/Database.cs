@@ -12,7 +12,7 @@ namespace LearningPlatform
     public static class Database
     {
         public static Dictionary<string,User> users; // stores all the teachers, lets you find them by just the email
-        public static Dictionary<string, SchoolClass> classes; // stores all classes, find them with class name
+        public static Dictionary<string, SchoolClass> classes; // stores all classes, find them with class ID
         public static List<string> classNames; // stores all the names of classes (Due to each class having it's own file)
 
         public static bool isTeacher; // Keeps track of if the current user is a teacher
