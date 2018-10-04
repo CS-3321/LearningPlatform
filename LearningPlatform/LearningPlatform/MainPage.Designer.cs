@@ -35,7 +35,12 @@
             this.createClassButton = new Ambiance.Ambiance_Button_2();
             this.classTabs = new Ambiance.Ambiance_TabControl();
             this.ControlBox = new Ambiance.Ambiance_ControlBox();
+            this.testTab = new System.Windows.Forms.TabPage();
+            this.ambiance_ComboBox1 = new Ambiance.Ambiance_ComboBox();
+            this.ambiance_HeaderLabel1 = new Ambiance.Ambiance_HeaderLabel();
             this.ambiance_ThemeContainer1.SuspendLayout();
+            this.classTabs.SuspendLayout();
+            this.testTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // ambiance_ThemeContainer1
@@ -103,6 +108,7 @@
             // 
             // classTabs
             // 
+            this.classTabs.Controls.Add(this.testTab);
             this.classTabs.ItemSize = new System.Drawing.Size(80, 24);
             this.classTabs.Location = new System.Drawing.Point(23, 59);
             this.classTabs.Name = "classTabs";
@@ -122,6 +128,57 @@
             this.ControlBox.TabIndex = 2;
             this.ControlBox.Text = "ambiance_ControlBox1";
             // 
+            // testTab
+            // 
+            this.testTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.testTab.Controls.Add(this.ambiance_HeaderLabel1);
+            this.testTab.Controls.Add(this.ambiance_ComboBox1);
+            this.testTab.Location = new System.Drawing.Point(4, 28);
+            this.testTab.Name = "testTab";
+            this.testTab.Padding = new System.Windows.Forms.Padding(3);
+            this.testTab.Size = new System.Drawing.Size(913, 395);
+            this.testTab.TabIndex = 0;
+            this.testTab.Text = "Test Tab";
+            // 
+            // ambiance_ComboBox1
+            // 
+            this.ambiance_ComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.ambiance_ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ambiance_ComboBox1.DropDownHeight = 100;
+            this.ambiance_ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ambiance_ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ambiance_ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.ambiance_ComboBox1.FormattingEnabled = true;
+            this.ambiance_ComboBox1.HoverSelectionColor = System.Drawing.Color.Empty;
+            this.ambiance_ComboBox1.IntegralHeight = false;
+            this.ambiance_ComboBox1.ItemHeight = 20;
+            this.ambiance_ComboBox1.Items.AddRange(new object[] {
+            "Test",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "Something Something"});
+            this.ambiance_ComboBox1.Location = new System.Drawing.Point(700, 10);
+            this.ambiance_ComboBox1.Name = "ambiance_ComboBox1";
+            this.ambiance_ComboBox1.Size = new System.Drawing.Size(204, 26);
+            this.ambiance_ComboBox1.StartIndex = 0;
+            this.ambiance_ComboBox1.TabIndex = 0;
+            // 
+            // ambiance_HeaderLabel1
+            // 
+            this.ambiance_HeaderLabel1.AutoSize = true;
+            this.ambiance_HeaderLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.ambiance_HeaderLabel1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.ambiance_HeaderLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
+            this.ambiance_HeaderLabel1.Location = new System.Drawing.Point(565, 13);
+            this.ambiance_HeaderLabel1.Name = "ambiance_HeaderLabel1";
+            this.ambiance_HeaderLabel1.Size = new System.Drawing.Size(129, 20);
+            this.ambiance_HeaderLabel1.TabIndex = 1;
+            this.ambiance_HeaderLabel1.Text = "Current Student :";
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,6 +191,9 @@
             this.Text = "Generic Learning Platform";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.ambiance_ThemeContainer1.ResumeLayout(false);
+            this.classTabs.ResumeLayout(false);
+            this.testTab.ResumeLayout(false);
+            this.testTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -147,5 +207,8 @@
         private Ambiance.Ambiance_Button_1 TESTERBUTTON;
         private Ambiance.Ambiance_Button_1 addStudentButton;
         private Ambiance.Ambiance_Button_2 createClassButton;
+        private System.Windows.Forms.TabPage testTab;
+        private Ambiance.Ambiance_HeaderLabel ambiance_HeaderLabel1;
+        private Ambiance.Ambiance_ComboBox ambiance_ComboBox1;
     }
 }
