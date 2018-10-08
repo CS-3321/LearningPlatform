@@ -33,9 +33,19 @@ namespace LearningPlatform
             className = allInfo[0];
             classID = allInfo[1];
             teacher = Database.users[allInfo[2]];
+            
             // all students in allInfo[3]
+            students = List<User>();
+            allInfo[3] = students;
+            
             // Parse the students.
+            foreach (string students in allInfo[3])
+            {
+                allInfo[3] = students.Split('#');
+            }
+            
           //  grades.Add(USER HERE, new Grade(GRADE STRING HERE));
+          grades.Add(User students, new Grade(allInfo[4]));  
         }
 
         public int[] getGrades(User _user) // returns an array of intergers that represent a user's grades
