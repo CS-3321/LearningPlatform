@@ -34,10 +34,11 @@
             this.addStudentButton = new Ambiance.Ambiance_Button_1();
             this.createClassButton = new Ambiance.Ambiance_Button_2();
             this.classTabs = new Ambiance.Ambiance_TabControl();
-            this.ControlBox = new Ambiance.Ambiance_ControlBox();
             this.testTab = new System.Windows.Forms.TabPage();
-            this.ambiance_ComboBox1 = new Ambiance.Ambiance_ComboBox();
+            this.ambiance_HeaderLabel2 = new Ambiance.Ambiance_HeaderLabel();
             this.ambiance_HeaderLabel1 = new Ambiance.Ambiance_HeaderLabel();
+            this.ambiance_ComboBox1 = new Ambiance.Ambiance_ComboBox();
+            this.ControlBox = new Ambiance.Ambiance_ControlBox();
             this.ambiance_ThemeContainer1.SuspendLayout();
             this.classTabs.SuspendLayout();
             this.testTab.SuspendLayout();
@@ -116,21 +117,10 @@
             this.classTabs.Size = new System.Drawing.Size(921, 427);
             this.classTabs.TabIndex = 0;
             // 
-            // ControlBox
-            // 
-            this.ControlBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ControlBox.BackColor = System.Drawing.Color.Transparent;
-            this.ControlBox.EnableMaximize = true;
-            this.ControlBox.Font = new System.Drawing.Font("Marlett", 7F);
-            this.ControlBox.Location = new System.Drawing.Point(5, 13);
-            this.ControlBox.Name = "ControlBox";
-            this.ControlBox.Size = new System.Drawing.Size(64, 22);
-            this.ControlBox.TabIndex = 2;
-            this.ControlBox.Text = "ambiance_ControlBox1";
-            // 
             // testTab
             // 
             this.testTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.testTab.Controls.Add(this.ambiance_HeaderLabel2);
             this.testTab.Controls.Add(this.ambiance_HeaderLabel1);
             this.testTab.Controls.Add(this.ambiance_ComboBox1);
             this.testTab.Location = new System.Drawing.Point(4, 28);
@@ -139,6 +129,30 @@
             this.testTab.Size = new System.Drawing.Size(913, 395);
             this.testTab.TabIndex = 0;
             this.testTab.Text = "Test Tab";
+            // 
+            // ambiance_HeaderLabel2
+            // 
+            this.ambiance_HeaderLabel2.AutoSize = true;
+            this.ambiance_HeaderLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.ambiance_HeaderLabel2.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Bold);
+            this.ambiance_HeaderLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
+            this.ambiance_HeaderLabel2.Location = new System.Drawing.Point(72, 180);
+            this.ambiance_HeaderLabel2.Name = "ambiance_HeaderLabel2";
+            this.ambiance_HeaderLabel2.Size = new System.Drawing.Size(773, 59);
+            this.ambiance_HeaderLabel2.TabIndex = 2;
+            this.ambiance_HeaderLabel2.Text = "Select a student to view their grades.";
+            // 
+            // ambiance_HeaderLabel1
+            // 
+            this.ambiance_HeaderLabel1.AutoSize = true;
+            this.ambiance_HeaderLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.ambiance_HeaderLabel1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.ambiance_HeaderLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
+            this.ambiance_HeaderLabel1.Location = new System.Drawing.Point(565, 13);
+            this.ambiance_HeaderLabel1.Name = "ambiance_HeaderLabel1";
+            this.ambiance_HeaderLabel1.Size = new System.Drawing.Size(129, 20);
+            this.ambiance_HeaderLabel1.TabIndex = 1;
+            this.ambiance_HeaderLabel1.Text = "Current Student :";
             // 
             // ambiance_ComboBox1
             // 
@@ -167,17 +181,17 @@
             this.ambiance_ComboBox1.StartIndex = 0;
             this.ambiance_ComboBox1.TabIndex = 0;
             // 
-            // ambiance_HeaderLabel1
+            // ControlBox
             // 
-            this.ambiance_HeaderLabel1.AutoSize = true;
-            this.ambiance_HeaderLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.ambiance_HeaderLabel1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.ambiance_HeaderLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.ambiance_HeaderLabel1.Location = new System.Drawing.Point(565, 13);
-            this.ambiance_HeaderLabel1.Name = "ambiance_HeaderLabel1";
-            this.ambiance_HeaderLabel1.Size = new System.Drawing.Size(129, 20);
-            this.ambiance_HeaderLabel1.TabIndex = 1;
-            this.ambiance_HeaderLabel1.Text = "Current Student :";
+            this.ControlBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ControlBox.BackColor = System.Drawing.Color.Transparent;
+            this.ControlBox.EnableMaximize = true;
+            this.ControlBox.Font = new System.Drawing.Font("Marlett", 7F);
+            this.ControlBox.Location = new System.Drawing.Point(5, 13);
+            this.ControlBox.Name = "ControlBox";
+            this.ControlBox.Size = new System.Drawing.Size(64, 22);
+            this.ControlBox.TabIndex = 2;
+            this.ControlBox.Text = "ambiance_ControlBox1";
             // 
             // MainPage
             // 
@@ -201,7 +215,9 @@
         #endregion
 
         private Ambiance.Ambiance_ThemeContainer ambiance_ThemeContainer1;
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
         private Ambiance.Ambiance_ControlBox ControlBox;
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         public Ambiance.Ambiance_TabControl classTabs;
         private Ambiance.Ambiance_Button_1 TESTERBUTTON;
@@ -210,5 +226,6 @@
         private System.Windows.Forms.TabPage testTab;
         private Ambiance.Ambiance_HeaderLabel ambiance_HeaderLabel1;
         private Ambiance.Ambiance_ComboBox ambiance_ComboBox1;
+        private Ambiance.Ambiance_HeaderLabel ambiance_HeaderLabel2;
     }
 }

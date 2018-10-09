@@ -59,8 +59,14 @@ namespace LearningPlatform
             int count = 0;
 
             #region testing
-            Database.currentClasses.Add(new SchoolClass("CS_2410", "930873", Database.currentUser));
-            Database.currentClasses.Add(new SchoolClass("MATH_3520", "171120", Database.currentUser));
+            SchoolClass tempClass = new SchoolClass("CS_2410", "930873", Database.currentUser);
+            Database.currentClasses.Add(tempClass);
+            Database.classes.Add(tempClass.classID, tempClass);
+
+            tempClass = new SchoolClass("MATH_3520", "171120", Database.currentUser);
+            Database.currentClasses.Add(tempClass);
+            Database.classes.Add(tempClass.classID, tempClass);
+
             for (int i = 0; i < 5; i++)
             {
                 Database.currentClasses[0].students.Add(new User("none", "none", "First"+i, "Last"+i, "", false));
@@ -92,7 +98,7 @@ namespace LearningPlatform
             {
                 AutoSize = true,
                 Location = new System.Drawing.Point(16, 7),
-                Name = "teacherLabel" + index,
+                Name = "teacherLabel",
              //   Font = new Font("Segoe UI", 12.0f, FontStyle.Bold),
                 Size = new System.Drawing.Size(43, 90),
                 Text = ("Teacher : " + Database.currentClasses[index].teacher.firstName + " " + Database.currentClasses[index].teacher.lastName)
@@ -101,7 +107,7 @@ namespace LearningPlatform
             {
                 AutoSize = true,
                 Location = new System.Drawing.Point(16, 27),
-                Name = "classIDLabel" + index,
+                Name = "classIDLabel",
             //    Font = new Font("Segoe UI", 12.0f, FontStyle.Regular),
                 Size = new System.Drawing.Size(43, 13),
                 Text = ("Class ID  : " + Database.currentClasses[index].classID)
@@ -110,15 +116,24 @@ namespace LearningPlatform
             {
                 AutoSize = true,
                 Location = new System.Drawing.Point(565, 13),
-                Name = "studentLabel" + index,
+                Name = "studentLabel",
                 //    Font = new Font("Segoe UI", 12.0f, FontStyle.Regular),
                 Size = new System.Drawing.Size(129, 20),
                 Text = ("Current Student :")
             };
+            Ambiance_HeaderLabel selectStudentLabel = new Ambiance_HeaderLabel
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(72, 180),
+                Name = "selectStudentLabel",
+                Font = new Font("Segoe UI", 32.0f, FontStyle.Bold),
+                Size = new System.Drawing.Size(773, 59),
+                Text = ("Select a student to view their grades.")
+            };
             Ambiance_ComboBox studentBox = new Ambiance_ComboBox
             {
                 Location = new System.Drawing.Point(700, 10),
-                Name = "studentBox" + index,
+                Name = "studentBox",
                 Size = new System.Drawing.Size(204, 26)
             };
             // TODO: Add each student's name to the dropdown box in that class
@@ -127,19 +142,27 @@ namespace LearningPlatform
                 studentBox.Items.Add(userInClass.firstName + " " + userInClass.lastName);
             }
             studentBox.SelectedIndexChanged += new EventHandler(DynamicComboBox_OnChange);
-
+            
             tab.Controls.Add(teacherLabel);
             tab.Controls.Add(classIDLabel);
             tab.Controls.Add(studentLabel);
+            tab.Controls.Add(selectStudentLabel);
             tab.Controls.Add(studentBox);
         }
 
         private void DynamicComboBox_OnChange(object sender, EventArgs e) // Handles when the student combobox is changed
         {
             // WIP change labels based on student clicked
-            //   ((ComboBox)sender).SelectedIndex
-            MessageBox.Show(((ComboBox)sender).Parent.Name);
-            
+            TabPage tab = (TabPage)((ComboBox)sender).Parent; // Gets the current Tab that we are on
+            SchoolClass currentClass = Database.classes[((ComboBox)sender).Parent.Name]; // Gets the current class we are on
+            User currentUser = currentClass.students[((ComboBox)sender).SelectedIndex]; // Gets the user that was selected
+            ShowInfo(tab, currentClass, currentUser);
+        }
+
+        private void ShowInfo(TabPage tab, SchoolClass currentClass, User currentUser)
+        {
+          if(tab.Controls.ContainsKey("selectStudentLabel"))
+            tab.Controls.Remove(tab.Controls.Find("selectStudentLabel", false)[0]);
         }
 
         private void TESTERBUTTON_Click(object sender, EventArgs e)
@@ -147,5 +170,6 @@ namespace LearningPlatform
             Database.isTeacher = !Database.isTeacher;
             ChangeForTeacher();
         }
+
     }
 }
