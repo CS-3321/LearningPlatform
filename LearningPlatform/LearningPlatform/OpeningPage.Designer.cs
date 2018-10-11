@@ -104,7 +104,7 @@
             this.Password_Text.Size = new System.Drawing.Size(313, 28);
             this.Password_Text.TabIndex = 1;
             this.Password_Text.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.Password_Text.UseSystemPasswordChar = false;
+            this.Password_Text.UseSystemPasswordChar = true;
             // 
             // user_label
             // 
