@@ -27,10 +27,10 @@ namespace LearningPlatform
         static Database()
         {
             users = new Dictionary<string, User>(); // Create static Dictionary in static constructor to properly save values
-            classes = new Dictionary<string, SchoolClass>();
+            classes = new Dictionary<string, SchoolClass>(); // Empty dictonary
             userFileName = String.Format(@"{0}\UserLogins.txt", Application.StartupPath); // Creates a filepath for User data file
             classFileName = String.Format(@"{0}\ClassNames.txt", Application.StartupPath); // Creates a filepath for Class data file
-            currentClasses = new List<SchoolClass>();
+            currentClasses = new List<SchoolClass>(); // Empty list
         }
 
         public static void CreateFiles() // These methods make sure all Data files exists
@@ -107,6 +107,21 @@ namespace LearningPlatform
         {
             isTeacher = false;
             currentUser = users[_user];
+        }
+
+        public static void SetCurrentClasses() // Gets the classes the user is in, and fills the list currentClasses
+        {
+            string _classes = Database.currentUser.classes; // Get string of all classes
+            if(_classes.Length != 0)
+            {
+                _classes = _classes.Substring(0, _classes.Length - 1); // Remove last @ symbol
+
+                string[] allClasses = _classes.Split('@'); // Make an array of all classes the student is in
+                for (int i = 0; i < allClasses.Length; i++) // Go through all classes
+                {
+                    currentClasses.Add(Database.classes[allClasses[i]]); // Add each class the student is in to the currentClasses list
+                }
+            }
         }
     }
 }
