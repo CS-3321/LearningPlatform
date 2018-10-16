@@ -56,5 +56,22 @@ namespace LearningPlatform
             return new int[0]; // returns empty array if user was not found
         }
 
+        public string Encoded()
+        {
+            string allText = "";
+
+            allText += className + "&" + classID + "&" + teacher.username + "&";
+
+            foreach (KeyValuePair<User, Grade> student in grades)
+            {
+                allText += student.Key.username += "!";
+                foreach (int grade in student.Value.grades)
+                {
+                    allText += grade + "^";
+                }
+            }
+            return allText;
+        }
+
     }
 }
