@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateClassPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateClassPage.Designer.cs">
+      <DependentUpon>CreateClassPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateStudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateStudentForm.Designer.cs">
+      <DependentUpon>CreateStudentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="Grade.cs" />
     <Compile Include="MainPage.cs">
@@ -73,6 +85,9 @@
     <Compile Include="Teacher.cs" />
     <Compile Include="theme.cs" />
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="CreateClassPage.resx">
+      <DependentUpon>CreateClassPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>
     </EmbeddedResource>
