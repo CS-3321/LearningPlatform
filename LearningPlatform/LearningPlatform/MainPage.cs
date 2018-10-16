@@ -155,7 +155,7 @@ namespace LearningPlatform
             }
             else // If the user is a student, add these elements
             {
-                ShowInfoStudent(tab, classTab, Database.currentUser);
+                ShowInfo(tab, classTab, Database.currentUser);
             }
             
         }
@@ -166,35 +166,42 @@ namespace LearningPlatform
             TabPage tab = (TabPage)((ComboBox)sender).Parent; // Gets the current Tab that we are on
             SchoolClass currentClass = Database.classes[((ComboBox)sender).Parent.Name]; // Gets the current class we are on
             User currentUser = currentClass.students[((ComboBox)sender).SelectedIndex]; // Gets the user that was selected
-            ShowInfoTeacher(tab, currentClass, currentUser);
+            ShowInfo(tab, currentClass, currentUser);
         }
 
-        private void ShowInfoTeacher(TabPage tab, SchoolClass currentClass, User currentUser) // Shows grades for particular student (Teacher only Method)
+        private void ShowInfo(TabPage tab, SchoolClass currentClass, User currentUser) // Shows grades for particular student
         {
-            if(tab.Controls.ContainsKey("selectStudentLabel"))
-                tab.Controls.Remove(tab.Controls.Find("selectStudentLabel", false)[0]);
-            Ambiance_Label studentNameLabel = new Ambiance_Label
+            if(tab.Controls.ContainsKey("selectStudentLabel")) // If tab has selectStudentLabel...
+                tab.Controls.Remove(tab.Controls.Find("selectStudentLabel", false)[0]); // Delete it
+            if (tab.Controls.ContainsKey("studentNameLabel")) // If the tab has studentNameLabel
+                tab.Controls.Find("studentNameLabel", false)[0].Text = "Student Name : " + currentUser.firstName + " " + currentUser.lastName; // Change text
+            else // otherwise..
             {
-                AutoSize = true,
-                Location = new System.Drawing.Point(326, 16),
-                Name = "studentNameLabel",
-                Size = new System.Drawing.Size(185, 20),
-                Text = ("Student Name : " + currentUser.firstName + " " + currentUser.lastName)
-            };
-            Ambiance_Label studentIDLabel = new Ambiance_Label
-            {
-                AutoSize = true,
-                Location = new System.Drawing.Point(351, 56),
-                Name = "studentIDLabel",
-                Size = new System.Drawing.Size(138, 20),
-                Text = ("Student ID : " + currentUser.username)
-            };
-            tab.Controls.Add(studentNameLabel);
-            tab.Controls.Add(studentIDLabel);
-        }
-        private void ShowInfoStudent(TabPage tab, SchoolClass currentClass, User currentUser)
-        {
+                Ambiance_Label studentNameLabel = new Ambiance_Label // Create it
+                {
+                    AutoSize = true,
+                    Location = new System.Drawing.Point(326, 16),
+                    Name = "studentNameLabel",
+                    Size = new System.Drawing.Size(185, 20),
+                    Text = ("Student Name : " + currentUser.firstName + " " + currentUser.lastName)
+                };
+                tab.Controls.Add(studentNameLabel);
+            }
 
+            if (tab.Controls.ContainsKey("studentIDLabel")) // If the tab has studentNameLabel
+                tab.Controls.Find("studentIDLabel", false)[0].Text = "Student ID : " + currentUser.username; // Change text
+            else // otherwise...
+            {
+                Ambiance_Label studentIDLabel = new Ambiance_Label // Create it
+                {
+                    AutoSize = true,
+                    Location = new System.Drawing.Point(351, 56),
+                    Name = "studentIDLabel",
+                    Size = new System.Drawing.Size(138, 20),
+                    Text = ("Student ID : " + currentUser.username)
+                };
+                tab.Controls.Add(studentIDLabel);
+            }
         }
 
         private void TESTERBUTTON_Click(object sender, EventArgs e)
@@ -203,5 +210,14 @@ namespace LearningPlatform
             ChangeForTeacher();
         } // For testing purposes, changes from student to teacher.
 
-    }
+        private void createClassButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addStudentButton_Click(object sender, EventArgs e)
+        {
+
+        }
+    }   
 }

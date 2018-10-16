@@ -29,22 +29,26 @@
         private void InitializeComponent()
         {
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.ambiance_ThemeContainer1 = new Ambiance.Ambiance_ThemeContainer();
             this.TESTERBUTTON = new Ambiance.Ambiance_Button_1();
             this.addStudentButton = new Ambiance.Ambiance_Button_1();
             this.createClassButton = new Ambiance.Ambiance_Button_2();
             this.classTabs = new Ambiance.Ambiance_TabControl();
             this.testTab = new System.Windows.Forms.TabPage();
+            this.ambiance_Label3 = new Ambiance.Ambiance_Label();
+            this.ambiance_Label1 = new Ambiance.Ambiance_Label();
             this.ambiance_HeaderLabel1 = new Ambiance.Ambiance_HeaderLabel();
             this.ambiance_ComboBox1 = new Ambiance.Ambiance_ComboBox();
             this.ControlBox = new Ambiance.Ambiance_ControlBox();
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.ambiance_Label1 = new Ambiance.Ambiance_Label();
-            this.ambiance_Label3 = new Ambiance.Ambiance_Label();
             this.ambiance_ThemeContainer1.SuspendLayout();
             this.classTabs.SuspendLayout();
             this.testTab.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
             // 
             // ambiance_ThemeContainer1
             // 
@@ -94,6 +98,7 @@
             this.addStudentButton.TabIndex = 6;
             this.addStudentButton.Text = "Add Student";
             this.addStudentButton.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.addStudentButton.Click += new System.EventHandler(this.addStudentButton_Click);
             // 
             // createClassButton
             // 
@@ -108,6 +113,7 @@
             this.createClassButton.TabIndex = 5;
             this.createClassButton.Text = "Create Class";
             this.createClassButton.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.createClassButton.Click += new System.EventHandler(this.createClassButton_Click);
             // 
             // classTabs
             // 
@@ -132,6 +138,30 @@
             this.testTab.Size = new System.Drawing.Size(913, 395);
             this.testTab.TabIndex = 0;
             this.testTab.Text = "Test Tab";
+            // 
+            // ambiance_Label3
+            // 
+            this.ambiance_Label3.AutoSize = true;
+            this.ambiance_Label3.BackColor = System.Drawing.Color.Transparent;
+            this.ambiance_Label3.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.ambiance_Label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
+            this.ambiance_Label3.Location = new System.Drawing.Point(351, 56);
+            this.ambiance_Label3.Name = "ambiance_Label3";
+            this.ambiance_Label3.Size = new System.Drawing.Size(138, 20);
+            this.ambiance_Label3.TabIndex = 4;
+            this.ambiance_Label3.Text = "Student ID : 909183";
+            // 
+            // ambiance_Label1
+            // 
+            this.ambiance_Label1.AutoSize = true;
+            this.ambiance_Label1.BackColor = System.Drawing.Color.Transparent;
+            this.ambiance_Label1.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.ambiance_Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
+            this.ambiance_Label1.Location = new System.Drawing.Point(326, 16);
+            this.ambiance_Label1.Name = "ambiance_Label1";
+            this.ambiance_Label1.Size = new System.Drawing.Size(185, 20);
+            this.ambiance_Label1.TabIndex = 2;
+            this.ambiance_Label1.Text = "Student Name : Test Name";
             // 
             // ambiance_HeaderLabel1
             // 
@@ -183,34 +213,6 @@
             this.ControlBox.Size = new System.Drawing.Size(64, 22);
             this.ControlBox.TabIndex = 2;
             this.ControlBox.Text = "ambiance_ControlBox1";
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
-            // ambiance_Label1
-            // 
-            this.ambiance_Label1.AutoSize = true;
-            this.ambiance_Label1.BackColor = System.Drawing.Color.Transparent;
-            this.ambiance_Label1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.ambiance_Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.ambiance_Label1.Location = new System.Drawing.Point(326, 16);
-            this.ambiance_Label1.Name = "ambiance_Label1";
-            this.ambiance_Label1.Size = new System.Drawing.Size(185, 20);
-            this.ambiance_Label1.TabIndex = 2;
-            this.ambiance_Label1.Text = "Student Name : Test Name";
-            // 
-            // ambiance_Label3
-            // 
-            this.ambiance_Label3.AutoSize = true;
-            this.ambiance_Label3.BackColor = System.Drawing.Color.Transparent;
-            this.ambiance_Label3.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.ambiance_Label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.ambiance_Label3.Location = new System.Drawing.Point(351, 56);
-            this.ambiance_Label3.Name = "ambiance_Label3";
-            this.ambiance_Label3.Size = new System.Drawing.Size(138, 20);
-            this.ambiance_Label3.TabIndex = 4;
-            this.ambiance_Label3.Text = "Student ID : 909183";
             // 
             // MainPage
             // 
