@@ -87,6 +87,20 @@ namespace LearningPlatform
             return true;
         }
 
+        public static bool AddSchoolClass(string _className, string _classID)
+        {
+            if (classes.ContainsKey(_classID)) // If the class already exists, let the user know
+                return false;
+            // Otherwise register the teacher
+            SchoolClass newClass = new SchoolClass(_className, _classID, currentUser); // Create new class
+            classes.Add(_classID, newClass); // Adds the SchoolClass to the List of classes
+            // Now Store in file
+            string classFileLocation = String.Format(@"{0}\" + _classID + ".txt", Application.StartupPath);
+            File.Create(classFileLocation); // Creates that file
+            File.AppendAllText(classFileLocation, newClass.Encoded());
+            return true;
+        }
+
         public static bool CheckTeacherLogin(string _user, string _pass) // Checks if email and password are correct
         {
             // checks if user exists, if they do, checks if their password is correct, if it is, checks if they are a teacher
