@@ -24,7 +24,14 @@ namespace LearningPlatform
 
         private void CreateClassButton_Click(object sender, EventArgs e)
         {
-            Database.classes.Add();
+            if(Database.AddSchoolClass("TempName", "TempID"))
+            {
+                // tell the user it was created properly
+            }
+            else
+            {
+                // tell the user it wasnt
+            }
 
             this.Close();
         }
