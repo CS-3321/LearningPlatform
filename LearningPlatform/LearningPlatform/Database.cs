@@ -76,7 +76,7 @@ namespace LearningPlatform
             string[] _classNames = classText.Split('|');
             SchoolClass(classText);
             
-            for (int a = 0; a < _classNames.Length; a++
+            for (int a = 0; a < _classNames.Length; a++)
                  {
                      classes.Add(Database.classes[_classNames[a]]);
                  }
