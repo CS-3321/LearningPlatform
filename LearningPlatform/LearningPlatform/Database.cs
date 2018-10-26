@@ -71,35 +71,17 @@ namespace LearningPlatform
 
             }
 
-            // TODO: Read in all class files based on class names in the classNames List, store them in the classes Dictionary
-        }
-
-        public static bool AddTeacher(string _user, string _pass, string _fName, string _lName)
-        {
-            if (users.ContainsKey(_user)) // If the that username is already registered, let the user know
-                return false;
-            // Otherwise register the teacher
-            User newUser = new User(_user, _pass, _fName, _lName, "", true); // Creates a teacher with no classes
-            users.Add(_user, newUser); // Adds the teacher to the List of users
-            // Now Store in file
-            File.AppendAllText(userFileName, newUser.Encoded()+"|");
+            // Read in all SchoolClass's info.
+            string classText = File.ReadAllText(classFileName);
+            string[] _classNames = classText.Split('|');
+            SchoolClass(classText);
             
-            return true;
-        }
-
-        public static bool AddSchoolClass(string _className, string _classID)
-        {
-            if (classes.ContainsKey(_classID)) // If the class already exists, let the user know
-                return false;
-            // Otherwise register the teacher
-            SchoolClass newClass = new SchoolClass(_className, _classID, currentUser); // Create new class
-            classes.Add(_classID, newClass); // Adds the SchoolClass to the List of classes
-            // Now Store in file
-            string classFileLocation = String.Format(@"{0}\" + _classID + ".txt", Application.StartupPath);
-            File.Create(classFileLocation); // Creates that file
-            File.AppendAllText(classFileLocation, newClass.Encoded());
-            return true;
-        }
+            for (int a = 0; a < _classNames.Length; a++
+                 {
+                     classes.Add(Database.classes[_classNames[a]]);
+                 }
+            
+            
 
         public static bool CheckTeacherLogin(string _user, string _pass) // Checks if email and password are correct
         {
