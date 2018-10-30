@@ -26,9 +26,8 @@ namespace LearningPlatform
         public SchoolClass(string info) // This constructor should be used for loading a SchoolClass
         {
             // Info example "CS-3321&107298&jones@gmail.com&993251!60^45^99^43^88#993251!60^45^99^43^88"
-
+            
             // Parse the class names.
-            info = className;
             string[] allInfo = info.Split('&');
             className = allInfo[0];
             classID = allInfo[1];
@@ -42,6 +41,8 @@ namespace LearningPlatform
             // Parse the students.
             foreach (string student in studentInfo)
             {
+                if (!student.Contains('!'))
+                    return;
                 idAndGrades = student.Split('!');
                 tempUser = Database.users[idAndGrades[0]];
                 students.Add(tempUser);
