@@ -35,7 +35,11 @@ namespace LearningPlatform
 
         public static void CreateFiles() // These methods make sure all Data files exists
         {
-            if(!File.Exists(userFileName)) // Checks if the User file exists
+            #region debug
+         //   MessageBox.Show("Making Files...");
+            #endregion
+
+            if (!File.Exists(userFileName)) // Checks if the User file exists
                 File.Create(userFileName); // If it does not exist, make it
             else
             {
@@ -48,18 +52,25 @@ namespace LearningPlatform
                     foreach (string _userInfo in _allUsers) // Go through all the info
                     {
                         _tempUser = new User(_userInfo); // Create the new User
-                        if(!users.ContainsKey(_tempUser.username))
-                          users.Add(_tempUser.username, _tempUser); // Add the user to the Dictonary(A list that stores 2 things together) name, User
+                        if (!users.ContainsKey(_tempUser.username))
+                            users.Add(_tempUser.username, _tempUser); // Add the user to the Dictonary(A list that stores 2 things together) name, User
                     }
                 }
-                
             }
 
-            if (!File.Exists(classFileName)) // Checks if the Class file exists
+            if (!File.Exists(classFileName))
+            { // Checks if the Class file exists
                 File.Create(classFileName); // If it does not exist, make it
+                classNames = new List<string>();
+                #region debug
+             //   MessageBox.Show("Could not find file");
+                #endregion
+            }
             else
             {
-
+                #region debug
+            //    MessageBox.Show("Found File");
+                #endregion
                 string classText = File.ReadAllText(classFileName); // Read in all data
                 if (classText.Contains('|')) // Makes sure there is atleast one class
                 {
@@ -67,21 +78,51 @@ namespace LearningPlatform
                     string[] _allClasses = classText.Split('|'); // Split the data properly, store in an array
                     classNames = new List<string>(_allClasses); // Since we just need to turn an array into a list, we can just pass the array
                                                                 // when creating the List.
+                    string currentClassFileName = "";
+                    string currentClassInfo = "";
+                    foreach (string currentClassName in classNames) // Go through the list of clasNames
+                    {
+                        currentClassFileName = String.Format(@"{0}\" + currentClassName + ".txt", Application.StartupPath); // Make custom file location, based on
+                                                                                                                            // Class Name (really class IDs)
+                        currentClassInfo = File.ReadAllText(currentClassFileName); // Read in info from the file
+                        if (currentClassInfo.Length != 0)
+                            classes.Add(currentClassName, new SchoolClass(currentClassInfo)); // Make a new SchoolClass based on that info and add it to the list
+                        #region debug
+                        //MessageBox.Show("Number of classes stored: " + classes.Count);
+                        //foreach (KeyValuePair<string, SchoolClass> test in classes)
+                        //{
+                        //    MessageBox.Show(test.Key);
+                        //}
+                        #endregion
+                    }
                 }
-
             }
+        }
 
-            // Read in all SchoolClass's info.
-            string classText = File.ReadAllText(classFileName);
-            string[] _classNames = classText.Split('|');
-            SchoolClass(classText);
-            
-            for (int a = 0; a < _classNames.Length; a++)
-                 {
-                     classes.Add(Database.classes[_classNames[a]]);
-                 }
-            
-            
+        public static bool AddTeacher(string _user, string _pass, string _fName, string _lName)
+        {
+            if (users.ContainsKey(_user)) // If the that username is already registered, let the user know
+                return false;
+            // Otherwise register the teacher
+            User newUser = new User(_user, _pass, _fName, _lName, "", true); // Creates a teacher with no classes
+            users.Add(_user, newUser); // Adds the teacher to the List of users
+            // Now Store in file
+            File.AppendAllText(userFileName, newUser.Encoded() + "|");
+            return true;
+        }
+        public static bool AddSchoolClass(string _className, string _classID)
+        {
+            if (classes.ContainsKey(_classID)) // If the class already exists, let the user know
+                return false;
+            // Otherwise register the teacher
+            SchoolClass newClass = new SchoolClass(_className, _classID, currentUser); // Create new class
+            classes.Add(_classID, newClass); // Adds the SchoolClass to the List of classes
+            // Now Store in file
+            string classFileLocation = String.Format(@"{0}\" + _classID + ".txt", Application.StartupPath);
+            File.Create(classFileLocation); // Creates that file
+            File.AppendAllText(classFileLocation, newClass.Encoded());
+            return true;
+        }
 
         public static bool CheckTeacherLogin(string _user, string _pass) // Checks if email and password are correct
         {
@@ -113,6 +154,13 @@ namespace LearningPlatform
                 _classes = _classes.Substring(0, _classes.Length - 1); // Remove last @ symbol
 
                 string[] allClasses = _classes.Split('@'); // Make an array of all classes the student is in
+                #region debug
+                //MessageBox.Show("Number of classes stored: " + classes.Count);
+                //foreach (KeyValuePair<string, SchoolClass> test in classes)
+                //{
+                //    MessageBox.Show(test.Key);
+                //}
+                #endregion
                 for (int i = 0; i < allClasses.Length; i++) // Go through all classes
                 {
                     currentClasses.Add(Database.classes[allClasses[i]]); // Add each class the student is in to the currentClasses list
