@@ -44,3 +44,4 @@ C:\Users\fraziern2\Desktop\LearningPlatform-master\LearningPlatform\LearningPlat
 C:\Users\fraziern2\Desktop\LearningPlatform-master\LearningPlatform\LearningPlatform\obj\Debug\LearningPlatform.csproj.CoreCompileInputs.cache
 C:\Users\fraziern2\Desktop\LearningPlatform-master\LearningPlatform\LearningPlatform\obj\Debug\LearningPlatform.exe
 C:\Users\fraziern2\Desktop\LearningPlatform-master\LearningPlatform\LearningPlatform\obj\Debug\LearningPlatform.pdb
+C:\Users\fraziern2\Desktop\LearningPlatform-master\LearningPlatform\LearningPlatform\obj\Debug\LearningPlatform.CreateClassPage.resources
