@@ -203,21 +203,17 @@ namespace LearningPlatform
                 tab.Controls.Add(studentIDLabel);
             }
         }
-
-        private void TESTERBUTTON_Click(object sender, EventArgs e)
-        {
-            Database.isTeacher = !Database.isTeacher;
-            ChangeForTeacher();
-        } // For testing purposes, changes from student to teacher.
-
+        
         private void createClassButton_Click(object sender, EventArgs e)
         {
-
+            CreateClassPage ccp = new CreateClassPage();
+            ccp.Show();
         }
 
         private void addStudentButton_Click(object sender, EventArgs e)
         {
-
+            CreateStudentForm csf = new CreateStudentForm();
+            csf.Show();
         }
     }   
 }

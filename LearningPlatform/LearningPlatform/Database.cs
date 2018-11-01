@@ -119,8 +119,16 @@ namespace LearningPlatform
             classes.Add(_classID, newClass); // Adds the SchoolClass to the List of classes
             // Now Store in file
             string classFileLocation = String.Format(@"{0}\" + _classID + ".txt", Application.StartupPath);
-            File.Create(classFileLocation); // Creates that file
             File.AppendAllText(classFileLocation, newClass.Encoded());
+            return true;
+        }
+
+        public static bool AddStudent(string _firstName, string _lastName, string _studentID, SchoolClass _class)
+        {
+            // Checks if student exists, and is already in the class they are being added to
+            if (users.ContainsKey(_studentID) && users[_studentID].classes.Contains(_class.className))
+                return false;
+
             return true;
         }
 

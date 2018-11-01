@@ -24,16 +24,19 @@ namespace LearningPlatform
 
         private void CreateClassButton_Click(object sender, EventArgs e)
         {
-            if(Database.AddSchoolClass("TempName", "TempID"))
+            if(ClassNameText.Text.Length == 0 || ClassIDText.Text.Length == 0)
             {
-                // tell the user it was created properly
-            }
-            else
-            {
-                // tell the user it wasnt
+                MessageBox.Show("You can not leave the Class Name or Class ID empty");
+                return;
             }
 
-            this.Close();
+            if(Database.AddSchoolClass(ClassNameText.Text, ClassIDText.Text))
+            {
+                MessageBox.Show("Class Successfully Created.");
+                this.Close();
+            }
+            else
+                MessageBox.Show("That Class already exists.");
         }
     }
 }

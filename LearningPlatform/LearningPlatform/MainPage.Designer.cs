@@ -31,7 +31,6 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.ambiance_ThemeContainer1 = new Ambiance.Ambiance_ThemeContainer();
-            this.TESTERBUTTON = new Ambiance.Ambiance_Button_1();
             this.addStudentButton = new Ambiance.Ambiance_Button_1();
             this.createClassButton = new Ambiance.Ambiance_Button_2();
             this.classTabs = new Ambiance.Ambiance_TabControl();
@@ -53,7 +52,6 @@
             // ambiance_ThemeContainer1
             // 
             this.ambiance_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            this.ambiance_ThemeContainer1.Controls.Add(this.TESTERBUTTON);
             this.ambiance_ThemeContainer1.Controls.Add(this.addStudentButton);
             this.ambiance_ThemeContainer1.Controls.Add(this.createClassButton);
             this.ambiance_ThemeContainer1.Controls.Add(this.classTabs);
@@ -70,20 +68,6 @@
             this.ambiance_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultLocation;
             this.ambiance_ThemeContainer1.TabIndex = 0;
             this.ambiance_ThemeContainer1.Text = "Generic Learning Platform";
-            // 
-            // TESTERBUTTON
-            // 
-            this.TESTERBUTTON.BackColor = System.Drawing.Color.Transparent;
-            this.TESTERBUTTON.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.TESTERBUTTON.Image = null;
-            this.TESTERBUTTON.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TESTERBUTTON.Location = new System.Drawing.Point(787, 505);
-            this.TESTERBUTTON.Name = "TESTERBUTTON";
-            this.TESTERBUTTON.Size = new System.Drawing.Size(117, 30);
-            this.TESTERBUTTON.TabIndex = 7;
-            this.TESTERBUTTON.Text = "TESTER";
-            this.TESTERBUTTON.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.TESTERBUTTON.Click += new System.EventHandler(this.TESTERBUTTON_Click);
             // 
             // addStudentButton
             // 
@@ -241,7 +225,6 @@
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         public Ambiance.Ambiance_TabControl classTabs;
-        private Ambiance.Ambiance_Button_1 TESTERBUTTON;
         private Ambiance.Ambiance_Button_1 addStudentButton;
         private Ambiance.Ambiance_Button_2 createClassButton;
         private System.Windows.Forms.TabPage testTab;

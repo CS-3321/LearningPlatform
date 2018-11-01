@@ -88,6 +88,9 @@
     <EmbeddedResource Include="CreateClassPage.resx">
       <DependentUpon>CreateClassPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CreateStudentForm.resx">
+      <DependentUpon>CreateStudentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>
     </EmbeddedResource>

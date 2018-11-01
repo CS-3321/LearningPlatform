@@ -15,6 +15,47 @@ namespace LearningPlatform
         public CreateStudentForm()
         {
             InitializeComponent();
+            foreach (SchoolClass currentClass in Database.currentClasses)
+            {
+                ClassComboBox.Items.Add(currentClass.className);
+            }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AddStudentButton_Click(object sender, EventArgs e)
+        {
+            #region debug
+         //   MessageBox.Show("Selected class Index: " + ClassComboBox.SelectedIndex);
+            #endregion
+            if (StudentIDText.Text.Length == 0)
+            {
+                MessageBox.Show("Student ID can not be empty!");
+                return;
+            }
+            if (ClassComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a class to add the student to.");
+                return;
+            }
+            if(!Database.users.ContainsKey(StudentIDText.Text) && (FirstNameText.Text.Length == 0 ||
+                LastNameText.Text.Length == 0))
+            {
+                MessageBox.Show("Student does not exist, must provide first and last name!");
+                return;
+            }
+            if (Database.AddStudent(FirstNameText.Text, LastNameText.Text, StudentIDText.Text, 
+                Database.currentClasses[ClassComboBox.SelectedIndex]))
+            {
+                MessageBox.Show("Student Successfully added to the class.");
+                this.Close();
+            }
+            else
+                MessageBox.Show("That student already belongs to that class.");
+            
         }
     }
 }
