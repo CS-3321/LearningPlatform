@@ -12,9 +12,13 @@ namespace LearningPlatform
 {
     public partial class Register : Form
     {
-        public Register()
+
+        Form1 open;
+
+        public Register(Form1 _open)
         {
             InitializeComponent();
+            open = _open;
         }
 
         private void register_form_Click(object sender, EventArgs e)
@@ -60,9 +64,8 @@ namespace LearningPlatform
 
         private void leave() // Goes back to the main form
         {
-            Form1 open = new Form1();
-            open.Show();
             this.Hide();
+            open.Show();
         }
     }
 }

@@ -31,6 +31,7 @@ namespace LearningPlatform
             userFileName = String.Format(@"{0}\UserLogins.txt", Application.StartupPath); // Creates a filepath for User data file
             classFileName = String.Format(@"{0}\ClassNames.txt", Application.StartupPath); // Creates a filepath for Class data file
             currentClasses = new List<SchoolClass>(); // Empty list
+            classNames = new List<string>();
         }
 
         public static void CreateFiles() // These methods make sure all Data files exists
@@ -117,18 +118,31 @@ namespace LearningPlatform
             // Otherwise register the teacher
             SchoolClass newClass = new SchoolClass(_className, _classID, currentUser); // Create new class
             classes.Add(_classID, newClass); // Adds the SchoolClass to the List of classes
+            currentClasses.Add(newClass);
+            classNames.Add(_classID);
             // Now Store in file
             string classFileLocation = String.Format(@"{0}\" + _classID + ".txt", Application.StartupPath);
             File.AppendAllText(classFileLocation, newClass.Encoded());
+            File.AppendAllText(classFileName, _classID + "|");
             return true;
         }
 
-        public static bool AddStudent(string _firstName, string _lastName, string _studentID, SchoolClass _class)
+        public static bool AddStudent(string _firstName, string _lastName, string _studentID, string _studentPass, SchoolClass _class)
         {
             // Checks if student exists, and is already in the class they are being added to
-            if (users.ContainsKey(_studentID) && users[_studentID].classes.Contains(_class.className))
+            if (users.ContainsKey(_studentID) && users[_studentID].classes.Contains(_class.classID))
                 return false;
-
+            if (users.ContainsKey(_studentID))
+            {
+                users[_studentID].AddClass(_class.className);
+                Database.classes[_class.classID].AddStudent(users[_studentID]);
+            }
+            else
+            {
+                User tempUser = new User(_studentID, _studentPass, _firstName, _lastName, _class.classID, false);
+                users.Add(_studentID , tempUser);
+                Database.classes[_class.classID].AddStudent(tempUser);
+            }
             return true;
         }
 

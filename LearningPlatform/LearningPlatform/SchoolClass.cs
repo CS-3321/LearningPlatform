@@ -57,6 +57,24 @@ namespace LearningPlatform
             return new int[0]; // returns empty array if user was not found
         }
 
+        public void AddStudent(User _user)
+        {
+            students.Add(_user);
+            grades.Add(_user, new Grade());
+        }
+        public bool AddGrade(User _user, string _grade)
+        {
+            if (grades[_user].AddGrade(_grade))
+                return true;
+            return false;
+        }
+        public bool ChangeGrade(User _user, string _grade, int _index)
+        {
+            if (grades[_user].ChangeGrade(_grade, _index))
+                return true;
+            return false;
+        }
+
         public string Encoded()
         {
             string allText = "";

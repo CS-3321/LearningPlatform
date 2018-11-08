@@ -35,6 +35,10 @@ namespace LearningPlatform
             classes = allInfo[4];
             isTeacher = allInfo[5].Equals("True"); // Turns the string "True" or the string "False" into the actual bool value
         }
+        public void AddClass(string _className)
+        {
+            classes += _className + "@";
+        }
         public string Encoded() // stores all data in a single string
         {
             return username + "&" + password + "&" + firstName + "&" + lastName + "&" + classes + "&" + isTeacher.ToString();

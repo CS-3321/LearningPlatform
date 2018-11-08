@@ -55,9 +55,8 @@ namespace LearningPlatform
 
         private void RegisterButton_Click(object sender, EventArgs e) // Shows register form
         {
-            Register reg = new Register();
+            Register reg = new Register(this);
             this.Hide();
-            
             reg.Show();
         }
 

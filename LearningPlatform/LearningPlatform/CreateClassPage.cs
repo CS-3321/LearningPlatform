@@ -19,7 +19,7 @@ namespace LearningPlatform
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            CloseThis();
         }
 
         private void CreateClassButton_Click(object sender, EventArgs e)
@@ -33,10 +33,17 @@ namespace LearningPlatform
             if(Database.AddSchoolClass(ClassNameText.Text, ClassIDText.Text))
             {
                 MessageBox.Show("Class Successfully Created.");
-                this.Close();
+                CloseThis();
             }
             else
                 MessageBox.Show("That Class already exists.");
+        }
+
+        private void CloseThis()
+        {
+            MainPage main = new MainPage();
+            main.Show();
+            this.Close();
         }
     }
 }

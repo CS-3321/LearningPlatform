@@ -27,9 +27,24 @@ namespace LearningPlatform
         {
             grades.Add(_grade);
         }
-        public void AddGrade(string _grade) // Changes grade from string to int, then adds to the list
+        public bool AddGrade(string _grade) // Changes grade from string to int, then adds to the list
         {
-            grades.Add(Int32.Parse(_grade));
+            try
+            {
+                grades.Add(Int32.Parse(_grade));
+            }
+            catch (Exception e) { return false; }
+            return true;
+        }
+        public bool ChangeGrade(string _grade, int _index)
+        {
+            try
+            {
+                int _gradeInt = Int32.Parse(_grade);
+                grades[_index] = _gradeInt;
+            }
+            catch (Exception e) { return false; }
+            return true;
         }
 
         public int[] AllGrades()

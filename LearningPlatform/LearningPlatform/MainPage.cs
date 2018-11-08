@@ -60,19 +60,19 @@ namespace LearningPlatform
             int count = 0;
 
             #region testing
-            SchoolClass tempClass = new SchoolClass("CS_2410", "930873", Database.currentUser);
-            Database.currentClasses.Add(tempClass);
-            Database.classes.Add(tempClass.classID, tempClass);
+            //SchoolClass tempClass = new SchoolClass("CS_2410", "930873", Database.currentUser);
+            //Database.currentClasses.Add(tempClass);
+            //Database.classes.Add(tempClass.classID, tempClass);
 
-            tempClass = new SchoolClass("MATH_3520", "171120", Database.currentUser);
-            Database.currentClasses.Add(tempClass);
-            Database.classes.Add(tempClass.classID, tempClass);
+            //tempClass = new SchoolClass("MATH_3520", "171120", Database.currentUser);
+            //Database.currentClasses.Add(tempClass);
+            //Database.classes.Add(tempClass.classID, tempClass);
 
-            for (int i = 0; i < 5; i++)
-            {
-                Database.currentClasses[0].students.Add(new User("none", "none", "First"+i, "Last"+i, "", false));
-                Database.currentClasses[1].students.Add(new User("none", "none", "First2" + i, "Last2" + i, "", false));
-            }
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    Database.currentClasses[0].students.Add(new User("none", "none", "First"+i, "Last"+i, "", false));
+            //    Database.currentClasses[1].students.Add(new User("none", "none", "First2" + i, "Last2" + i, "", false));
+            //}
             #endregion
 
             foreach (SchoolClass classTab in Database.currentClasses) // WIP: Adding tabs equal to number of classes
@@ -208,12 +208,14 @@ namespace LearningPlatform
         {
             CreateClassPage ccp = new CreateClassPage();
             ccp.Show();
+            this.Close();
         }
 
         private void addStudentButton_Click(object sender, EventArgs e)
         {
             CreateStudentForm csf = new CreateStudentForm();
             csf.Show();
+            this.Close();
         }
     }   
 }

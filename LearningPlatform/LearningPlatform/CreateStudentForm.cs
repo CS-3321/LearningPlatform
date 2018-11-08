@@ -23,7 +23,7 @@ namespace LearningPlatform
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            CloseThis();
         }
 
         private void AddStudentButton_Click(object sender, EventArgs e)
@@ -42,20 +42,28 @@ namespace LearningPlatform
                 return;
             }
             if(!Database.users.ContainsKey(StudentIDText.Text) && (FirstNameText.Text.Length == 0 ||
-                LastNameText.Text.Length == 0))
+                LastNameText.Text.Length == 0 || StudentPassText.Text.Length == 0))
             {
-                MessageBox.Show("Student does not exist, must provide first and last name!");
+                MessageBox.Show("Student does not exist, must provide name and password!");
                 return;
             }
-            if (Database.AddStudent(FirstNameText.Text, LastNameText.Text, StudentIDText.Text, 
-                Database.currentClasses[ClassComboBox.SelectedIndex]))
+            if (Database.AddStudent(FirstNameText.Text, LastNameText.Text, StudentIDText.Text, StudentPassText.Text,
+                 Database.currentClasses[ClassComboBox.SelectedIndex]))
             {
                 MessageBox.Show("Student Successfully added to the class.");
-                this.Close();
+
+                CloseThis();
             }
             else
                 MessageBox.Show("That student already belongs to that class.");
             
+        }
+
+        private void CloseThis()
+        {
+            MainPage main = new MainPage();
+            main.Show();
+            this.Close();
         }
     }
 }
