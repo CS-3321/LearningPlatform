@@ -162,7 +162,6 @@ namespace LearningPlatform
 
         private void DynamicComboBox_OnChange(object sender, EventArgs e) // Handles when the student combobox is changed
         {
-            // WIP change labels based on student clicked
             TabPage tab = (TabPage)((ComboBox)sender).Parent; // Gets the current Tab that we are on
             SchoolClass currentClass = Database.classes[((ComboBox)sender).Parent.Name]; // Gets the current class we are on
             User currentUser = currentClass.students[((ComboBox)sender).SelectedIndex]; // Gets the user that was selected
@@ -201,6 +200,46 @@ namespace LearningPlatform
                     Text = ("Student ID : " + currentUser.username)
                 };
                 tab.Controls.Add(studentIDLabel);
+            }
+
+            if (tab.Controls.ContainsKey("studentGPALabel")) // If the tab has studentGPALabel
+                tab.Controls.Find("studentGPALabel", false)[0].Text = "Student GPA : " + currentUser.CalculateGPA(); // Change text
+            else // otherwise...
+            {
+                Ambiance_Label studentGPALabel = new Ambiance_Label // Create it
+                {
+                    AutoSize = true,
+                    Location = new System.Drawing.Point(395, 95),
+                    Name = "studentGPALabel",
+                    Size = new System.Drawing.Size(74, 20),
+                    Text = ("GPA : " + String.Format("{0:0.00}", currentUser.CalculateGPA()))
+                };
+                tab.Controls.Add(studentGPALabel);
+            }
+
+            if (tab.Controls.ContainsKey("studentGradesPanel")) // If the tab has studentGPALabel
+                tab.Controls.Remove(tab.Controls.Find("studentGradesPanel", false)[0]);// Remove it
+
+            Ambiance_Panel studentGradesPanel = new Ambiance_Panel // Make a new one
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(745, 56),
+                Name = "studentGradesPanel",
+                Size = new System.Drawing.Size(148, 320)
+            };
+            tab.Controls.Add(studentGradesPanel);
+            List<int> currentGrades = currentClass.grades[currentUser].grades;
+            for (int i = 0; i < currentGrades.Count; i++)
+            {
+
+                studentGradesPanel.Controls.Add(new Ambiance_Label
+                {
+                    AutoSize = true,
+                    Location = new System.Drawing.Point(12, 48 * i + 12),
+                    Name = "grade" + i,
+                    Size = new System.Drawing.Size(54, 20),
+                    Text = ("Test " + i + " : ")
+                });
             }
         }
         

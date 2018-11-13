@@ -52,8 +52,10 @@ namespace LearningPlatform
             return grades.ToArray(); // returns the list as an array for easy reading and use
         }
 
-        public int Average() // returns a rounded version of the grade average
+        public int GetAverage() // returns a rounded version of the grade average
         {
+            if (grades.Count == 0)
+                return 100;
             return (int)Math.Round(grades.Average()); // gets average, rounds it, then turns it back into an integer
         }
 

@@ -39,6 +39,29 @@ namespace LearningPlatform
         {
             classes += _className + "@";
         }
+
+        public double CalculateGPA()
+        {
+            if (isTeacher)
+                return -1; // return -1 if trying to calculate the gpa of a teacher
+            string[] allClasses = classes.Split('@');
+            int averagePerClass = 0;
+            double totalGpa = 0;
+            foreach (string className in allClasses)
+            {
+                averagePerClass = Database.classes[className].grades[this].GetAverage();
+                if (averagePerClass > 89)
+                    totalGpa += 4;
+                else if (averagePerClass > 79)
+                    totalGpa += 3;
+                else if (averagePerClass > 69)
+                    totalGpa += 2;
+                else if (averagePerClass > 59)
+                    totalGpa += 1;
+            }
+
+            return totalGpa / allClasses.Length;
+        }
         public string Encoded() // stores all data in a single string
         {
             return username + "&" + password + "&" + firstName + "&" + lastName + "&" + classes + "&" + isTeacher.ToString();
