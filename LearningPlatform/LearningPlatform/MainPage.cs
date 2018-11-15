@@ -225,21 +225,60 @@ namespace LearningPlatform
                 AutoSize = true,
                 Location = new System.Drawing.Point(745, 56),
                 Name = "studentGradesPanel",
-                Size = new System.Drawing.Size(148, 320)
+                Size = new System.Drawing.Size(148, 320),
+                AutoScroll = true
             };
             tab.Controls.Add(studentGradesPanel);
             List<int> currentGrades = currentClass.grades[currentUser].grades;
+            #region testing
+            currentGrades.Add(12);
+            currentGrades.Add(55);
+            currentGrades.Add(99);
+            currentGrades.Add(12);
+            currentGrades.Add(55);
+            currentGrades.Add(99);
+            currentGrades.Add(12);
+            currentGrades.Add(55);
+            currentGrades.Add(99);
+            #endregion
             for (int i = 0; i < currentGrades.Count; i++)
             {
-
                 studentGradesPanel.Controls.Add(new Ambiance_Label
                 {
                     AutoSize = true,
                     Location = new System.Drawing.Point(12, 48 * i + 12),
-                    Name = "grade" + i,
+                    Name = "label" + i,
                     Size = new System.Drawing.Size(54, 20),
                     Text = ("Test " + i + " : ")
                 });
+                studentGradesPanel.Controls.Add(new Ambiance_Separator
+                {
+                    Location = new System.Drawing.Point(4, 48 * i + 42),
+                    Name = "separator" + i,
+                    Size = new System.Drawing.Size(139, 10)
+                });
+                if (Database.currentUser.isTeacher)
+                {
+                    studentGradesPanel.Controls.Add(new Ambiance_TextBox
+                    {
+                        Location = new System.Drawing.Point(73, 48 * i + 9),
+                        Name = "grade" + i,
+                        Size = new System.Drawing.Size(69, 28),
+                        Text = (currentGrades[i].ToString()),
+                        MaxLength = 3,
+                        TextAlignment = HorizontalAlignment.Center
+                    });
+                }
+                else
+                {
+                    studentGradesPanel.Controls.Add(new Ambiance_Label
+                    {
+                        Location = new System.Drawing.Point(73, 48 * i + 12),
+                        Name = "grade" + i,
+                        Size = new System.Drawing.Size(69, 28),
+                        Text = (currentGrades[i].ToString())
+                    });
+                }
             }
         }
         

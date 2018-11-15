@@ -19,7 +19,12 @@ namespace LearningPlatform
             string[] tempGrades = _grades.Split('^'); // takes a single string with all grades, turns it into an array of strings
             foreach (string grade in tempGrades) // goes through the array
             {
-                grades.Add(Int32.Parse(grade)); // Turns the string into an int and adds it to the grade List
+                try
+                {
+                    grades.Add(Int32.Parse(grade)); // Turns the string into an int and adds it to the grade List
+                }
+                catch (Exception e) { }
+                
             }
         }
         

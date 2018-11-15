@@ -38,6 +38,7 @@ namespace LearningPlatform
             string[] studentInfo = allInfo[3].Split('#');
             string[] idAndGrades = null;
             User tempUser = null;
+            grades = new Dictionary<User, Grade>();
             // Parse the students.
             foreach (string student in studentInfo)
             {
@@ -46,7 +47,8 @@ namespace LearningPlatform
                 idAndGrades = student.Split('!');
                 tempUser = Database.users[idAndGrades[0]];
                 students.Add(tempUser);
-                grades.Add(tempUser, new Grade(idAndGrades[1]));
+                if(idAndGrades[1].Length>0)
+                    grades.Add(tempUser, new Grade(idAndGrades[1]));
             }
         }
 

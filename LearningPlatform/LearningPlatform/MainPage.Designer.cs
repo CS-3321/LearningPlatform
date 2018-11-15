@@ -30,6 +30,7 @@
         {
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.ambiance_ThemeContainer1 = new Ambiance.Ambiance_ThemeContainer();
             this.addStudentButton = new Ambiance.Ambiance_Button_1();
             this.createClassButton = new Ambiance.Ambiance_Button_2();
@@ -50,7 +51,6 @@
             this.ambiance_HeaderLabel1 = new Ambiance.Ambiance_HeaderLabel();
             this.ambiance_ComboBox1 = new Ambiance.Ambiance_ComboBox();
             this.ControlBox = new Ambiance.Ambiance_ControlBox();
-            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.ambiance_ThemeContainer1.SuspendLayout();
             this.classTabs.SuspendLayout();
             this.testTab.SuspendLayout();
@@ -60,6 +60,12 @@
             // printDialog1
             // 
             this.printDialog1.UseEXDialog = true;
+            // 
+            // directorySearcher1
+            // 
+            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
             // ambiance_ThemeContainer1
             // 
@@ -343,12 +349,6 @@
             this.ControlBox.Size = new System.Drawing.Size(64, 22);
             this.ControlBox.TabIndex = 2;
             this.ControlBox.Text = "ambiance_ControlBox1";
-            // 
-            // directorySearcher1
-            // 
-            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
             // MainPage
             // 

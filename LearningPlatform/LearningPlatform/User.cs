@@ -42,9 +42,9 @@ namespace LearningPlatform
 
         public double CalculateGPA()
         {
-            if (isTeacher)
+            if (isTeacher || classes.Length == 0)
                 return -1; // return -1 if trying to calculate the gpa of a teacher
-            string[] allClasses = classes.Split('@');
+            string[] allClasses = classes.Substring(classes.Length - 1).Split('@');
             int averagePerClass = 0;
             double totalGpa = 0;
             foreach (string className in allClasses)

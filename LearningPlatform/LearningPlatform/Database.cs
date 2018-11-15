@@ -120,10 +120,12 @@ namespace LearningPlatform
             classes.Add(_classID, newClass); // Adds the SchoolClass to the List of classes
             currentClasses.Add(newClass);
             classNames.Add(_classID);
+            currentUser.AddClass(newClass.classID);
             // Now Store in file
             string classFileLocation = String.Format(@"{0}\" + _classID + ".txt", Application.StartupPath);
             File.AppendAllText(classFileLocation, newClass.Encoded());
             File.AppendAllText(classFileName, _classID + "|");
+            SaveUsers();
             return true;
         }
 
@@ -134,7 +136,7 @@ namespace LearningPlatform
                 return false;
             if (users.ContainsKey(_studentID))
             {
-                users[_studentID].AddClass(_class.className);
+                users[_studentID].AddClass(_class.classID);
                 Database.classes[_class.classID].AddStudent(users[_studentID]);
             }
             else
@@ -143,9 +145,27 @@ namespace LearningPlatform
                 users.Add(_studentID , tempUser);
                 Database.classes[_class.classID].AddStudent(tempUser);
             }
+            SaveUsers();
+            SaveClass(_class);
             return true;
         }
 
+        private static void SaveUsers()
+        {
+            string _allUsers = "";
+            File.Delete(userFileName);
+            foreach (KeyValuePair<string,User> _currentUser in users)
+            {
+                _allUsers += _currentUser.Value.Encoded() + "|";
+            }
+            File.AppendAllText(userFileName, _allUsers);
+        }
+        private static void SaveClass(SchoolClass _currentClass)
+        {
+            string classFileLocation = String.Format(@"{0}\" + _currentClass.classID + ".txt", Application.StartupPath);
+            File.Delete(classFileLocation);
+            File.AppendAllText(classFileLocation, _currentClass.Encoded());
+        }
         public static bool CheckTeacherLogin(string _user, string _pass) // Checks if email and password are correct
         {
             // checks if user exists, if they do, checks if their password is correct, if it is, checks if they are a teacher
@@ -171,6 +191,7 @@ namespace LearningPlatform
         public static void SetCurrentClasses() // Gets the classes the user is in, and fills the list currentClasses
         {
             string _classes = Database.currentUser.classes; // Get string of all classes
+            currentClasses = new List<SchoolClass>();
             if(_classes.Length != 0)
             {
                 _classes = _classes.Substring(0, _classes.Length - 1); // Remove last @ symbol
