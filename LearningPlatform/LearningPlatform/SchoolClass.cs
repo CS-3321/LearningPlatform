@@ -42,13 +42,16 @@ namespace LearningPlatform
             // Parse the students.
             foreach (string student in studentInfo)
             {
-                if (!student.Contains('!'))
-                    return;
-                idAndGrades = student.Split('!');
-                tempUser = Database.users[idAndGrades[0]];
-                students.Add(tempUser);
-                if(idAndGrades[1].Length>0)
+                try
+                {
+                    if (!student.Contains('!'))
+                        return;
+                    idAndGrades = student.Split('!');
+                    tempUser = Database.users[idAndGrades[0]];
+                    students.Add(tempUser);
                     grades.Add(tempUser, new Grade(idAndGrades[1]));
+                }
+                catch (Exception) { }
             }
         }
 
@@ -77,7 +80,7 @@ namespace LearningPlatform
             return false;
         }
 
-        public string Encoded()
+        public string Encoded() 
         {
             string allText = "";
 
@@ -85,14 +88,14 @@ namespace LearningPlatform
 
             foreach (KeyValuePair<User, Grade> student in grades)
             {
-                allText += student.Key.username += "!";
+                allText += student.Key.username + "!";
                 foreach (int grade in student.Value.grades)
                 {
                     allText += grade + "^";
                 }
+                allText += "#";
             }
             return allText;
         }
-
     }
 }

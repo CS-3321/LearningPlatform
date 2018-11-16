@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.ambiance_ThemeContainer1 = new Ambiance.Ambiance_ThemeContainer();
+            this.ambiance_HeaderLabel3 = new Ambiance.Ambiance_HeaderLabel();
+            this.StudentPassText = new Ambiance.Ambiance_TextBox();
             this.ambiance_Label2 = new Ambiance.Ambiance_Label();
             this.ambiance_Label1 = new Ambiance.Ambiance_Label();
             this.ClassComboBox = new Ambiance.Ambiance_ComboBox();
@@ -41,8 +43,6 @@
             this.FirstNameText = new Ambiance.Ambiance_TextBox();
             this.AddStudentButton = new Ambiance.Ambiance_Button_2();
             this.cancelButton = new Ambiance.Ambiance_Button_1();
-            this.ambiance_HeaderLabel3 = new Ambiance.Ambiance_HeaderLabel();
-            this.StudentPassText = new Ambiance.Ambiance_TextBox();
             this.ambiance_ThemeContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,8 +73,35 @@
             this.ambiance_ThemeContainer1.Size = new System.Drawing.Size(380, 389);
             this.ambiance_ThemeContainer1.SmartBounds = true;
             this.ambiance_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultLocation;
-            this.ambiance_ThemeContainer1.TabIndex = 0;
+            this.ambiance_ThemeContainer1.TabIndex = 7;
             this.ambiance_ThemeContainer1.Text = "Add Student";
+            // 
+            // ambiance_HeaderLabel3
+            // 
+            this.ambiance_HeaderLabel3.AutoSize = true;
+            this.ambiance_HeaderLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.ambiance_HeaderLabel3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.ambiance_HeaderLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
+            this.ambiance_HeaderLabel3.Location = new System.Drawing.Point(45, 197);
+            this.ambiance_HeaderLabel3.Name = "ambiance_HeaderLabel3";
+            this.ambiance_HeaderLabel3.Size = new System.Drawing.Size(152, 20);
+            this.ambiance_HeaderLabel3.TabIndex = 20;
+            this.ambiance_HeaderLabel3.Text = "*Student\'s Password";
+            // 
+            // StudentPassText
+            // 
+            this.StudentPassText.BackColor = System.Drawing.Color.Transparent;
+            this.StudentPassText.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.StudentPassText.ForeColor = System.Drawing.Color.DimGray;
+            this.StudentPassText.Location = new System.Drawing.Point(203, 193);
+            this.StudentPassText.MaxLength = 32767;
+            this.StudentPassText.Multiline = false;
+            this.StudentPassText.Name = "StudentPassText";
+            this.StudentPassText.ReadOnly = false;
+            this.StudentPassText.Size = new System.Drawing.Size(132, 28);
+            this.StudentPassText.TabIndex = 3;
+            this.StudentPassText.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.StudentPassText.UseSystemPasswordChar = false;
             // 
             // ambiance_Label2
             // 
@@ -116,7 +143,7 @@
             this.ClassComboBox.Name = "ClassComboBox";
             this.ClassComboBox.Size = new System.Drawing.Size(149, 26);
             this.ClassComboBox.StartIndex = 0;
-            this.ClassComboBox.TabIndex = 16;
+            this.ClassComboBox.TabIndex = 4;
             // 
             // ambiance_HeaderLabel2
             // 
@@ -153,7 +180,7 @@
             this.LastNameText.Name = "LastNameText";
             this.LastNameText.ReadOnly = false;
             this.LastNameText.Size = new System.Drawing.Size(118, 28);
-            this.LastNameText.TabIndex = 13;
+            this.LastNameText.TabIndex = 1;
             this.LastNameText.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.LastNameText.UseSystemPasswordChar = false;
             // 
@@ -180,7 +207,7 @@
             this.StudentIDText.Name = "StudentIDText";
             this.StudentIDText.ReadOnly = false;
             this.StudentIDText.Size = new System.Drawing.Size(196, 28);
-            this.StudentIDText.TabIndex = 11;
+            this.StudentIDText.TabIndex = 2;
             this.StudentIDText.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.StudentIDText.UseSystemPasswordChar = false;
             // 
@@ -207,7 +234,7 @@
             this.FirstNameText.Name = "FirstNameText";
             this.FirstNameText.ReadOnly = false;
             this.FirstNameText.Size = new System.Drawing.Size(118, 28);
-            this.FirstNameText.TabIndex = 9;
+            this.FirstNameText.TabIndex = 0;
             this.FirstNameText.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.FirstNameText.UseSystemPasswordChar = false;
             // 
@@ -220,7 +247,7 @@
             this.AddStudentButton.Location = new System.Drawing.Point(56, 284);
             this.AddStudentButton.Name = "AddStudentButton";
             this.AddStudentButton.Size = new System.Drawing.Size(126, 30);
-            this.AddStudentButton.TabIndex = 8;
+            this.AddStudentButton.TabIndex = 5;
             this.AddStudentButton.Text = "Add Student";
             this.AddStudentButton.TextAlignment = System.Drawing.StringAlignment.Center;
             this.AddStudentButton.Click += new System.EventHandler(this.AddStudentButton_Click);
@@ -234,37 +261,10 @@
             this.cancelButton.Location = new System.Drawing.Point(207, 284);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(117, 30);
-            this.cancelButton.TabIndex = 7;
+            this.cancelButton.TabIndex = 6;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.TextAlignment = System.Drawing.StringAlignment.Center;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // ambiance_HeaderLabel3
-            // 
-            this.ambiance_HeaderLabel3.AutoSize = true;
-            this.ambiance_HeaderLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.ambiance_HeaderLabel3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.ambiance_HeaderLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.ambiance_HeaderLabel3.Location = new System.Drawing.Point(45, 197);
-            this.ambiance_HeaderLabel3.Name = "ambiance_HeaderLabel3";
-            this.ambiance_HeaderLabel3.Size = new System.Drawing.Size(152, 20);
-            this.ambiance_HeaderLabel3.TabIndex = 20;
-            this.ambiance_HeaderLabel3.Text = "*Student\'s Password";
-            // 
-            // StudentPassText
-            // 
-            this.StudentPassText.BackColor = System.Drawing.Color.Transparent;
-            this.StudentPassText.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.StudentPassText.ForeColor = System.Drawing.Color.DimGray;
-            this.StudentPassText.Location = new System.Drawing.Point(203, 193);
-            this.StudentPassText.MaxLength = 32767;
-            this.StudentPassText.Multiline = false;
-            this.StudentPassText.Name = "StudentPassText";
-            this.StudentPassText.ReadOnly = false;
-            this.StudentPassText.Size = new System.Drawing.Size(132, 28);
-            this.StudentPassText.TabIndex = 19;
-            this.StudentPassText.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.StudentPassText.UseSystemPasswordChar = false;
             // 
             // CreateStudentForm
             // 

@@ -2334,7 +2334,11 @@ namespace Ambiance
             base.OnResize(e);
             if (!Focused)
             {
-                SelectionLength = 0;
+                try
+                {
+                    SelectionLength = 0;
+                }
+                catch (Exception) { }
             }
         }
 

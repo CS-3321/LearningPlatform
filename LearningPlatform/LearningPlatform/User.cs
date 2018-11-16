@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,12 +45,16 @@ namespace LearningPlatform
         {
             if (isTeacher || classes.Length == 0)
                 return -1; // return -1 if trying to calculate the gpa of a teacher
-            string[] allClasses = classes.Substring(classes.Length - 1).Split('@');
+            string[] allClasses = classes.Substring(0, classes.Length - 1).Split('@');
             int averagePerClass = 0;
             double totalGpa = 0;
             foreach (string className in allClasses)
             {
-                averagePerClass = Database.classes[className].grades[this].GetAverage();
+                #region Debug
+                Debug.Print(className);
+                #endregion
+                SchoolClass tempClass = Database.classes[className];
+                averagePerClass = tempClass.grades[this].GetAverage();
                 if (averagePerClass > 89)
                     totalGpa += 4;
                 else if (averagePerClass > 79)

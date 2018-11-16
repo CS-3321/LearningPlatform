@@ -32,6 +32,8 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.ambiance_ThemeContainer1 = new Ambiance.Ambiance_ThemeContainer();
+            this.ExitButton = new Ambiance.Ambiance_Button_2();
+            this.Logout = new Ambiance.Ambiance_Button_1();
             this.addStudentButton = new Ambiance.Ambiance_Button_1();
             this.createClassButton = new Ambiance.Ambiance_Button_2();
             this.classTabs = new Ambiance.Ambiance_TabControl();
@@ -39,6 +41,21 @@
             this.ambiance_Label4 = new Ambiance.Ambiance_Label();
             this.ambiance_Button_11 = new Ambiance.Ambiance_Button_1();
             this.ambiance_Panel1 = new Ambiance.Ambiance_Panel();
+            this.ambiance_Label10 = new Ambiance.Ambiance_Label();
+            this.ambiance_Separator7 = new Ambiance.Ambiance_Separator();
+            this.ambiance_TextBox7 = new Ambiance.Ambiance_TextBox();
+            this.ambiance_Label9 = new Ambiance.Ambiance_Label();
+            this.ambiance_Separator6 = new Ambiance.Ambiance_Separator();
+            this.ambiance_TextBox6 = new Ambiance.Ambiance_TextBox();
+            this.ambiance_Label8 = new Ambiance.Ambiance_Label();
+            this.ambiance_Separator5 = new Ambiance.Ambiance_Separator();
+            this.ambiance_TextBox5 = new Ambiance.Ambiance_TextBox();
+            this.ambiance_Label7 = new Ambiance.Ambiance_Label();
+            this.ambiance_Separator4 = new Ambiance.Ambiance_Separator();
+            this.ambiance_TextBox4 = new Ambiance.Ambiance_TextBox();
+            this.ambiance_Label6 = new Ambiance.Ambiance_Label();
+            this.ambiance_Separator3 = new Ambiance.Ambiance_Separator();
+            this.ambiance_TextBox3 = new Ambiance.Ambiance_TextBox();
             this.ambiance_Label5 = new Ambiance.Ambiance_Label();
             this.ambiance_Separator2 = new Ambiance.Ambiance_Separator();
             this.ambiance_TextBox2 = new Ambiance.Ambiance_TextBox();
@@ -50,7 +67,6 @@
             this.ambiance_Label1 = new Ambiance.Ambiance_Label();
             this.ambiance_HeaderLabel1 = new Ambiance.Ambiance_HeaderLabel();
             this.ambiance_ComboBox1 = new Ambiance.Ambiance_ComboBox();
-            this.ControlBox = new Ambiance.Ambiance_ControlBox();
             this.ambiance_ThemeContainer1.SuspendLayout();
             this.classTabs.SuspendLayout();
             this.testTab.SuspendLayout();
@@ -70,10 +86,11 @@
             // ambiance_ThemeContainer1
             // 
             this.ambiance_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.ambiance_ThemeContainer1.Controls.Add(this.ExitButton);
+            this.ambiance_ThemeContainer1.Controls.Add(this.Logout);
             this.ambiance_ThemeContainer1.Controls.Add(this.addStudentButton);
             this.ambiance_ThemeContainer1.Controls.Add(this.createClassButton);
             this.ambiance_ThemeContainer1.Controls.Add(this.classTabs);
-            this.ambiance_ThemeContainer1.Controls.Add(this.ControlBox);
             this.ambiance_ThemeContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ambiance_ThemeContainer1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ambiance_ThemeContainer1.Location = new System.Drawing.Point(0, 0);
@@ -87,6 +104,34 @@
             this.ambiance_ThemeContainer1.TabIndex = 0;
             this.ambiance_ThemeContainer1.Text = "Generic Learning Platform";
             // 
+            // ExitButton
+            // 
+            this.ExitButton.BackColor = System.Drawing.Color.Transparent;
+            this.ExitButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.ExitButton.Image = null;
+            this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ExitButton.Location = new System.Drawing.Point(763, 505);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(177, 30);
+            this.ExitButton.TabIndex = 8;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
+            // Logout
+            // 
+            this.Logout.BackColor = System.Drawing.Color.Transparent;
+            this.Logout.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.Logout.Image = null;
+            this.Logout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Logout.Location = new System.Drawing.Point(27, 505);
+            this.Logout.Name = "Logout";
+            this.Logout.Size = new System.Drawing.Size(177, 30);
+            this.Logout.TabIndex = 7;
+            this.Logout.Text = "Logout";
+            this.Logout.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Logout.Click += new System.EventHandler(this.Logout_Click);
+            // 
             // addStudentButton
             // 
             this.addStudentButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -94,7 +139,7 @@
             this.addStudentButton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.addStudentButton.Image = null;
             this.addStudentButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.addStudentButton.Location = new System.Drawing.Point(477, 505);
+            this.addStudentButton.Location = new System.Drawing.Point(520, 505);
             this.addStudentButton.Name = "addStudentButton";
             this.addStudentButton.Size = new System.Drawing.Size(177, 30);
             this.addStudentButton.TabIndex = 6;
@@ -109,7 +154,7 @@
             this.createClassButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.createClassButton.Image = null;
             this.createClassButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.createClassButton.Location = new System.Drawing.Point(253, 505);
+            this.createClassButton.Location = new System.Drawing.Point(274, 505);
             this.createClassButton.Name = "createClassButton";
             this.createClassButton.Size = new System.Drawing.Size(177, 30);
             this.createClassButton.TabIndex = 5;
@@ -163,7 +208,7 @@
             this.ambiance_Button_11.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ambiance_Button_11.Image = null;
             this.ambiance_Button_11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ambiance_Button_11.Location = new System.Drawing.Point(593, 307);
+            this.ambiance_Button_11.Location = new System.Drawing.Point(566, 307);
             this.ambiance_Button_11.Name = "ambiance_Button_11";
             this.ambiance_Button_11.Size = new System.Drawing.Size(139, 30);
             this.ambiance_Button_11.TabIndex = 12;
@@ -174,6 +219,21 @@
             // 
             this.ambiance_Panel1.AutoScroll = true;
             this.ambiance_Panel1.BackColor = System.Drawing.Color.White;
+            this.ambiance_Panel1.Controls.Add(this.ambiance_Label10);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_Separator7);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_TextBox7);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_Label9);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_Separator6);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_TextBox6);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_Label8);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_Separator5);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_TextBox5);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_Label7);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_Separator4);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_TextBox4);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_Label6);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_Separator3);
+            this.ambiance_Panel1.Controls.Add(this.ambiance_TextBox3);
             this.ambiance_Panel1.Controls.Add(this.ambiance_Label5);
             this.ambiance_Panel1.Controls.Add(this.ambiance_Separator2);
             this.ambiance_Panel1.Controls.Add(this.ambiance_TextBox2);
@@ -181,11 +241,196 @@
             this.ambiance_Panel1.Controls.Add(this.ambiance_Separator1);
             this.ambiance_Panel1.Controls.Add(this.ambiance_TextBox1);
             this.ambiance_Panel1.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.ambiance_Panel1.Location = new System.Drawing.Point(745, 56);
+            this.ambiance_Panel1.Location = new System.Drawing.Point(721, 56);
             this.ambiance_Panel1.Name = "ambiance_Panel1";
-            this.ambiance_Panel1.Size = new System.Drawing.Size(148, 320);
+            this.ambiance_Panel1.Size = new System.Drawing.Size(172, 320);
             this.ambiance_Panel1.TabIndex = 11;
             this.ambiance_Panel1.Text = "ambiance_Panel1";
+            // 
+            // ambiance_Label10
+            // 
+            this.ambiance_Label10.AutoSize = true;
+            this.ambiance_Label10.BackColor = System.Drawing.Color.White;
+            this.ambiance_Label10.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.ambiance_Label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
+            this.ambiance_Label10.Location = new System.Drawing.Point(13, 297);
+            this.ambiance_Label10.Name = "ambiance_Label10";
+            this.ambiance_Label10.Size = new System.Drawing.Size(54, 20);
+            this.ambiance_Label10.TabIndex = 26;
+            this.ambiance_Label10.Text = "Test 2 :";
+            // 
+            // ambiance_Separator7
+            // 
+            this.ambiance_Separator7.BackColor = System.Drawing.Color.White;
+            this.ambiance_Separator7.Location = new System.Drawing.Point(5, 327);
+            this.ambiance_Separator7.Name = "ambiance_Separator7";
+            this.ambiance_Separator7.Size = new System.Drawing.Size(139, 10);
+            this.ambiance_Separator7.TabIndex = 27;
+            this.ambiance_Separator7.Text = "ambiance_Separator7";
+            // 
+            // ambiance_TextBox7
+            // 
+            this.ambiance_TextBox7.BackColor = System.Drawing.Color.Transparent;
+            this.ambiance_TextBox7.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.ambiance_TextBox7.ForeColor = System.Drawing.Color.DimGray;
+            this.ambiance_TextBox7.Location = new System.Drawing.Point(74, 294);
+            this.ambiance_TextBox7.MaxLength = 3;
+            this.ambiance_TextBox7.Multiline = false;
+            this.ambiance_TextBox7.Name = "ambiance_TextBox7";
+            this.ambiance_TextBox7.ReadOnly = false;
+            this.ambiance_TextBox7.Size = new System.Drawing.Size(69, 28);
+            this.ambiance_TextBox7.TabIndex = 28;
+            this.ambiance_TextBox7.Text = "100";
+            this.ambiance_TextBox7.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ambiance_TextBox7.UseSystemPasswordChar = false;
+            // 
+            // ambiance_Label9
+            // 
+            this.ambiance_Label9.AutoSize = true;
+            this.ambiance_Label9.BackColor = System.Drawing.Color.White;
+            this.ambiance_Label9.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.ambiance_Label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
+            this.ambiance_Label9.Location = new System.Drawing.Point(13, 253);
+            this.ambiance_Label9.Name = "ambiance_Label9";
+            this.ambiance_Label9.Size = new System.Drawing.Size(54, 20);
+            this.ambiance_Label9.TabIndex = 23;
+            this.ambiance_Label9.Text = "Test 2 :";
+            // 
+            // ambiance_Separator6
+            // 
+            this.ambiance_Separator6.BackColor = System.Drawing.Color.White;
+            this.ambiance_Separator6.Location = new System.Drawing.Point(5, 283);
+            this.ambiance_Separator6.Name = "ambiance_Separator6";
+            this.ambiance_Separator6.Size = new System.Drawing.Size(139, 10);
+            this.ambiance_Separator6.TabIndex = 24;
+            this.ambiance_Separator6.Text = "ambiance_Separator6";
+            // 
+            // ambiance_TextBox6
+            // 
+            this.ambiance_TextBox6.BackColor = System.Drawing.Color.Transparent;
+            this.ambiance_TextBox6.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.ambiance_TextBox6.ForeColor = System.Drawing.Color.DimGray;
+            this.ambiance_TextBox6.Location = new System.Drawing.Point(74, 250);
+            this.ambiance_TextBox6.MaxLength = 3;
+            this.ambiance_TextBox6.Multiline = false;
+            this.ambiance_TextBox6.Name = "ambiance_TextBox6";
+            this.ambiance_TextBox6.ReadOnly = false;
+            this.ambiance_TextBox6.Size = new System.Drawing.Size(69, 28);
+            this.ambiance_TextBox6.TabIndex = 25;
+            this.ambiance_TextBox6.Text = "100";
+            this.ambiance_TextBox6.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ambiance_TextBox6.UseSystemPasswordChar = false;
+            // 
+            // ambiance_Label8
+            // 
+            this.ambiance_Label8.AutoSize = true;
+            this.ambiance_Label8.BackColor = System.Drawing.Color.White;
+            this.ambiance_Label8.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.ambiance_Label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
+            this.ambiance_Label8.Location = new System.Drawing.Point(13, 207);
+            this.ambiance_Label8.Name = "ambiance_Label8";
+            this.ambiance_Label8.Size = new System.Drawing.Size(54, 20);
+            this.ambiance_Label8.TabIndex = 20;
+            this.ambiance_Label8.Text = "Test 2 :";
+            // 
+            // ambiance_Separator5
+            // 
+            this.ambiance_Separator5.BackColor = System.Drawing.Color.White;
+            this.ambiance_Separator5.Location = new System.Drawing.Point(5, 237);
+            this.ambiance_Separator5.Name = "ambiance_Separator5";
+            this.ambiance_Separator5.Size = new System.Drawing.Size(139, 10);
+            this.ambiance_Separator5.TabIndex = 21;
+            this.ambiance_Separator5.Text = "ambiance_Separator5";
+            // 
+            // ambiance_TextBox5
+            // 
+            this.ambiance_TextBox5.BackColor = System.Drawing.Color.Transparent;
+            this.ambiance_TextBox5.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.ambiance_TextBox5.ForeColor = System.Drawing.Color.DimGray;
+            this.ambiance_TextBox5.Location = new System.Drawing.Point(74, 204);
+            this.ambiance_TextBox5.MaxLength = 3;
+            this.ambiance_TextBox5.Multiline = false;
+            this.ambiance_TextBox5.Name = "ambiance_TextBox5";
+            this.ambiance_TextBox5.ReadOnly = false;
+            this.ambiance_TextBox5.Size = new System.Drawing.Size(69, 28);
+            this.ambiance_TextBox5.TabIndex = 22;
+            this.ambiance_TextBox5.Text = "100";
+            this.ambiance_TextBox5.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ambiance_TextBox5.UseSystemPasswordChar = false;
+            // 
+            // ambiance_Label7
+            // 
+            this.ambiance_Label7.AutoSize = true;
+            this.ambiance_Label7.BackColor = System.Drawing.Color.White;
+            this.ambiance_Label7.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.ambiance_Label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
+            this.ambiance_Label7.Location = new System.Drawing.Point(13, 156);
+            this.ambiance_Label7.Name = "ambiance_Label7";
+            this.ambiance_Label7.Size = new System.Drawing.Size(54, 20);
+            this.ambiance_Label7.TabIndex = 17;
+            this.ambiance_Label7.Text = "Test 2 :";
+            // 
+            // ambiance_Separator4
+            // 
+            this.ambiance_Separator4.BackColor = System.Drawing.Color.White;
+            this.ambiance_Separator4.Location = new System.Drawing.Point(5, 186);
+            this.ambiance_Separator4.Name = "ambiance_Separator4";
+            this.ambiance_Separator4.Size = new System.Drawing.Size(139, 10);
+            this.ambiance_Separator4.TabIndex = 18;
+            this.ambiance_Separator4.Text = "ambiance_Separator4";
+            // 
+            // ambiance_TextBox4
+            // 
+            this.ambiance_TextBox4.BackColor = System.Drawing.Color.Transparent;
+            this.ambiance_TextBox4.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.ambiance_TextBox4.ForeColor = System.Drawing.Color.DimGray;
+            this.ambiance_TextBox4.Location = new System.Drawing.Point(74, 153);
+            this.ambiance_TextBox4.MaxLength = 3;
+            this.ambiance_TextBox4.Multiline = false;
+            this.ambiance_TextBox4.Name = "ambiance_TextBox4";
+            this.ambiance_TextBox4.ReadOnly = false;
+            this.ambiance_TextBox4.Size = new System.Drawing.Size(69, 28);
+            this.ambiance_TextBox4.TabIndex = 19;
+            this.ambiance_TextBox4.Text = "100";
+            this.ambiance_TextBox4.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ambiance_TextBox4.UseSystemPasswordChar = false;
+            // 
+            // ambiance_Label6
+            // 
+            this.ambiance_Label6.AutoSize = true;
+            this.ambiance_Label6.BackColor = System.Drawing.Color.White;
+            this.ambiance_Label6.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.ambiance_Label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
+            this.ambiance_Label6.Location = new System.Drawing.Point(13, 107);
+            this.ambiance_Label6.Name = "ambiance_Label6";
+            this.ambiance_Label6.Size = new System.Drawing.Size(54, 20);
+            this.ambiance_Label6.TabIndex = 14;
+            this.ambiance_Label6.Text = "Test 2 :";
+            // 
+            // ambiance_Separator3
+            // 
+            this.ambiance_Separator3.BackColor = System.Drawing.Color.White;
+            this.ambiance_Separator3.Location = new System.Drawing.Point(5, 137);
+            this.ambiance_Separator3.Name = "ambiance_Separator3";
+            this.ambiance_Separator3.Size = new System.Drawing.Size(139, 10);
+            this.ambiance_Separator3.TabIndex = 15;
+            this.ambiance_Separator3.Text = "ambiance_Separator3";
+            // 
+            // ambiance_TextBox3
+            // 
+            this.ambiance_TextBox3.BackColor = System.Drawing.Color.Transparent;
+            this.ambiance_TextBox3.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.ambiance_TextBox3.ForeColor = System.Drawing.Color.DimGray;
+            this.ambiance_TextBox3.Location = new System.Drawing.Point(74, 104);
+            this.ambiance_TextBox3.MaxLength = 3;
+            this.ambiance_TextBox3.Multiline = false;
+            this.ambiance_TextBox3.Name = "ambiance_TextBox3";
+            this.ambiance_TextBox3.ReadOnly = false;
+            this.ambiance_TextBox3.Size = new System.Drawing.Size(69, 28);
+            this.ambiance_TextBox3.TabIndex = 16;
+            this.ambiance_TextBox3.Text = "100";
+            this.ambiance_TextBox3.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ambiance_TextBox3.UseSystemPasswordChar = false;
             // 
             // ambiance_Label5
             // 
@@ -268,7 +513,7 @@
             this.ambiance_Button_21.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.ambiance_Button_21.Image = null;
             this.ambiance_Button_21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ambiance_Button_21.Location = new System.Drawing.Point(593, 346);
+            this.ambiance_Button_21.Location = new System.Drawing.Point(566, 346);
             this.ambiance_Button_21.Name = "ambiance_Button_21";
             this.ambiance_Button_21.Size = new System.Drawing.Size(139, 30);
             this.ambiance_Button_21.TabIndex = 6;
@@ -338,18 +583,6 @@
             this.ambiance_ComboBox1.StartIndex = 0;
             this.ambiance_ComboBox1.TabIndex = 0;
             // 
-            // ControlBox
-            // 
-            this.ControlBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ControlBox.BackColor = System.Drawing.Color.Transparent;
-            this.ControlBox.EnableMaximize = true;
-            this.ControlBox.Font = new System.Drawing.Font("Marlett", 7F);
-            this.ControlBox.Location = new System.Drawing.Point(5, 13);
-            this.ControlBox.Name = "ControlBox";
-            this.ControlBox.Size = new System.Drawing.Size(64, 22);
-            this.ControlBox.TabIndex = 2;
-            this.ControlBox.Text = "ambiance_ControlBox1";
-            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,7 +608,6 @@
 
         private Ambiance.Ambiance_ThemeContainer ambiance_ThemeContainer1;
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
-        private Ambiance.Ambiance_ControlBox ControlBox;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         public Ambiance.Ambiance_TabControl classTabs;
@@ -398,5 +630,22 @@
         private Ambiance.Ambiance_Label ambiance_Label5;
         private Ambiance.Ambiance_Separator ambiance_Separator2;
         private Ambiance.Ambiance_TextBox ambiance_TextBox2;
+        private Ambiance.Ambiance_Label ambiance_Label10;
+        private Ambiance.Ambiance_Separator ambiance_Separator7;
+        private Ambiance.Ambiance_TextBox ambiance_TextBox7;
+        private Ambiance.Ambiance_Label ambiance_Label9;
+        private Ambiance.Ambiance_Separator ambiance_Separator6;
+        private Ambiance.Ambiance_TextBox ambiance_TextBox6;
+        private Ambiance.Ambiance_Label ambiance_Label8;
+        private Ambiance.Ambiance_Separator ambiance_Separator5;
+        private Ambiance.Ambiance_TextBox ambiance_TextBox5;
+        private Ambiance.Ambiance_Label ambiance_Label7;
+        private Ambiance.Ambiance_Separator ambiance_Separator4;
+        private Ambiance.Ambiance_TextBox ambiance_TextBox4;
+        private Ambiance.Ambiance_Label ambiance_Label6;
+        private Ambiance.Ambiance_Separator ambiance_Separator3;
+        private Ambiance.Ambiance_TextBox ambiance_TextBox3;
+        private Ambiance.Ambiance_Button_2 ExitButton;
+        private Ambiance.Ambiance_Button_1 Logout;
     }
 }

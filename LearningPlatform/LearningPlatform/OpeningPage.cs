@@ -64,6 +64,7 @@ namespace LearningPlatform
         {
             MainPage main = new MainPage();
             this.Hide();
+            main.SetOpeningPage(this);
             main.Show();
         }
     }

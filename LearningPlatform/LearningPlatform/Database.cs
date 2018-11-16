@@ -141,7 +141,7 @@ namespace LearningPlatform
             }
             else
             {
-                User tempUser = new User(_studentID, _studentPass, _firstName, _lastName, _class.classID, false);
+                User tempUser = new User(_studentID, _studentPass, _firstName, _lastName, _class.classID + "@", false);
                 users.Add(_studentID , tempUser);
                 Database.classes[_class.classID].AddStudent(tempUser);
             }

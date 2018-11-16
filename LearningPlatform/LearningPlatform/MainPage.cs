@@ -15,6 +15,7 @@ namespace LearningPlatform
     {
 
         List<TabPage> allTabs; // Stores all tabs
+        Form1 openPage = null;
 
         public MainPage() // Constructor function, gets called when the user logins successfully
         {
@@ -24,9 +25,9 @@ namespace LearningPlatform
             UpdateUI(); // Make the UI unique for each student or teacher
         }
 
-        private void exit_button_Click(object sender, EventArgs e) // Depreciated
+        public void SetOpeningPage(Form1 _openPage)
         {
-            Application.Exit(); // Exits when exit button is clicked
+            openPage = _openPage;
         }
 
         public void UpdateUI()
@@ -39,7 +40,6 @@ namespace LearningPlatform
         {
             if (Database.isTeacher)
             {
-                classTabs.Size = new System.Drawing.Size(921, 427);
                 createClassButton.Enabled = true;
                 createClassButton.Visible = true;
                 addStudentButton.Enabled = true;
@@ -47,7 +47,6 @@ namespace LearningPlatform
             }
             else
             {
-                classTabs.Size = new System.Drawing.Size(921, 487);
                 createClassButton.Enabled = false;
                 createClassButton.Visible = false;
                 addStudentButton.Enabled = false;
@@ -203,7 +202,7 @@ namespace LearningPlatform
             }
 
             if (tab.Controls.ContainsKey("studentGPALabel")) // If the tab has studentGPALabel
-                tab.Controls.Find("studentGPALabel", false)[0].Text = "Student GPA : " + currentUser.CalculateGPA(); // Change text
+                tab.Controls.Find("studentGPALabel", false)[0].Text = "GPA : " + String.Format("{0:0.00}", currentUser.CalculateGPA()); // Change text
             else // otherwise...
             {
                 Ambiance_Label studentGPALabel = new Ambiance_Label // Create it
@@ -222,24 +221,24 @@ namespace LearningPlatform
 
             Ambiance_Panel studentGradesPanel = new Ambiance_Panel // Make a new one
             {
-                AutoSize = true,
-                Location = new System.Drawing.Point(745, 56),
+                Location = new System.Drawing.Point(721, 56),
                 Name = "studentGradesPanel",
-                Size = new System.Drawing.Size(148, 320),
+                Size = new System.Drawing.Size(172, 320),
                 AutoScroll = true
             };
-            tab.Controls.Add(studentGradesPanel);
+            studentGradesPanel.VerticalScroll.Visible = true;
+            
             List<int> currentGrades = currentClass.grades[currentUser].grades;
             #region testing
-            currentGrades.Add(12);
-            currentGrades.Add(55);
-            currentGrades.Add(99);
-            currentGrades.Add(12);
-            currentGrades.Add(55);
-            currentGrades.Add(99);
-            currentGrades.Add(12);
-            currentGrades.Add(55);
-            currentGrades.Add(99);
+            //currentGrades.Add(12);
+            //currentGrades.Add(55);
+            //currentGrades.Add(99);
+            //currentGrades.Add(12);
+            //currentGrades.Add(55);
+            //currentGrades.Add(99);
+            //currentGrades.Add(12);
+            //currentGrades.Add(55);
+            //currentGrades.Add(99);
             #endregion
             for (int i = 0; i < currentGrades.Count; i++)
             {
@@ -280,6 +279,7 @@ namespace LearningPlatform
                     });
                 }
             }
+            tab.Controls.Add(studentGradesPanel);
         }
         
         private void createClassButton_Click(object sender, EventArgs e)
@@ -293,6 +293,17 @@ namespace LearningPlatform
         {
             CreateStudentForm csf = new CreateStudentForm();
             csf.Show();
+            this.Close();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit(); // Exits when exit button is clicked
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            openPage.Show();
             this.Close();
         }
     }   

@@ -16,6 +16,9 @@ namespace LearningPlatform
         public Grade(string _grades)
         {
             grades = new List<int>();
+            if (_grades.Length == 0)
+                return;
+            _grades = _grades.Substring(0, _grades.Length - 1);
             string[] tempGrades = _grades.Split('^'); // takes a single string with all grades, turns it into an array of strings
             foreach (string grade in tempGrades) // goes through the array
             {
@@ -23,7 +26,7 @@ namespace LearningPlatform
                 {
                     grades.Add(Int32.Parse(grade)); // Turns the string into an int and adds it to the grade List
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
                 
             }
         }
@@ -38,7 +41,7 @@ namespace LearningPlatform
             {
                 grades.Add(Int32.Parse(_grade));
             }
-            catch (Exception e) { return false; }
+            catch (Exception) { return false; }
             return true;
         }
         public bool ChangeGrade(string _grade, int _index)
@@ -48,7 +51,7 @@ namespace LearningPlatform
                 int _gradeInt = Int32.Parse(_grade);
                 grades[_index] = _gradeInt;
             }
-            catch (Exception e) { return false; }
+            catch (Exception) { return false; }
             return true;
         }
 
