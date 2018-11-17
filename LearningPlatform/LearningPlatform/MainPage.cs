@@ -167,6 +167,24 @@ namespace LearningPlatform
             ShowInfo(tab, currentClass, currentUser);
         }
 
+        private void DynamicAddGrade_Click(object sender, EventArgs e)
+        {
+            TabPage tab = (TabPage)((Ambiance_Button_1)sender).Parent;
+            SchoolClass currentClass = Database.classes[tab.Name];
+            User currentUser = currentClass.students[((ComboBox)tab.Controls.Find("studentBox", false)[0]).SelectedIndex];
+            Ambiance_Panel currentPanel = (Ambiance_Panel)tab.Controls.Find("studentGradesPanel", false)[0];
+            AddGrade(tab, currentClass, currentUser, currentPanel);
+        }
+
+        private void DynamicChangeGrade_Click(object sender, EventArgs e)
+        {
+            TabPage tab = (TabPage)((Ambiance_Button_2)sender).Parent;
+            SchoolClass currentClass = Database.classes[tab.Name];
+            User currentUser = currentClass.students[((ComboBox)tab.Controls.Find("studentBox", false)[0]).SelectedIndex];
+            Ambiance_Panel currentPanel = (Ambiance_Panel)tab.Controls.Find("studentGradesPanel", false)[0];
+            ChangeGrade(tab, currentClass, currentUser, currentPanel);
+        }
+
         private void ShowInfo(TabPage tab, SchoolClass currentClass, User currentUser) // Shows grades for particular student
         {
             if(tab.Controls.ContainsKey("selectStudentLabel")) // If tab has selectStudentLabel...
@@ -186,7 +204,7 @@ namespace LearningPlatform
                 tab.Controls.Add(studentNameLabel);
             }
 
-            if (tab.Controls.ContainsKey("studentIDLabel")) // If the tab has studentNameLabel
+            if (tab.Controls.ContainsKey("studentIDLabel")) // If the tab has studentIDLabel
                 tab.Controls.Find("studentIDLabel", false)[0].Text = "Student ID : " + currentUser.username; // Change text
             else // otherwise...
             {
@@ -216,7 +234,29 @@ namespace LearningPlatform
                 tab.Controls.Add(studentGPALabel);
             }
 
-            if (tab.Controls.ContainsKey("studentGradesPanel")) // If the tab has studentGPALabel
+            if(!tab.Controls.ContainsKey("gradeButton") && Database.isTeacher)  // If the tab has studentGPALabel
+            {
+                Ambiance_Button_1 gradeButton = new Ambiance_Button_1 // Create it
+                {
+                    Location = new System.Drawing.Point(566, 307),
+                    Name = "gradeButton",
+                    Size = new System.Drawing.Size(139, 30),
+                    Text = ("Add Test Score")
+                };
+                Ambiance_Button_2 gradeButton1 = new Ambiance_Button_2 // Create it
+                {
+                    Location = new System.Drawing.Point(566, 346),
+                    Name = "gradeButton1",
+                    Size = new System.Drawing.Size(139, 30),
+                    Text = ("Commit Changes")
+                };
+                gradeButton.Click += new EventHandler(DynamicAddGrade_Click);
+                gradeButton1.Click += new EventHandler(DynamicChangeGrade_Click);
+                tab.Controls.Add(gradeButton);
+                tab.Controls.Add(gradeButton1);
+            }
+
+            if (tab.Controls.ContainsKey("studentGradesPanel")) // If the tab has studentGradesPanel
                 tab.Controls.Remove(tab.Controls.Find("studentGradesPanel", false)[0]);// Remove it
 
             Ambiance_Panel studentGradesPanel = new Ambiance_Panel // Make a new one
@@ -261,7 +301,7 @@ namespace LearningPlatform
                     studentGradesPanel.Controls.Add(new Ambiance_TextBox
                     {
                         Location = new System.Drawing.Point(73, 48 * i + 9),
-                        Name = "grade" + i,
+                        Name = "grade",
                         Size = new System.Drawing.Size(69, 28),
                         Text = (currentGrades[i].ToString()),
                         MaxLength = 3,
@@ -273,7 +313,7 @@ namespace LearningPlatform
                     studentGradesPanel.Controls.Add(new Ambiance_Label
                     {
                         Location = new System.Drawing.Point(73, 48 * i + 12),
-                        Name = "grade" + i,
+                        Name = "grade",
                         Size = new System.Drawing.Size(69, 28),
                         Text = (currentGrades[i].ToString())
                     });
@@ -282,10 +322,76 @@ namespace LearningPlatform
             tab.Controls.Add(studentGradesPanel);
         }
         
+        private void AddGrade(TabPage tab, SchoolClass currentClass, User currentUser, Ambiance_Panel currentPanel)
+        {
+            List<int> currentGrades = currentClass.grades[currentUser].grades;
+            int i = currentGrades.Count;
+            currentGrades.Add(0);
+            currentPanel.Controls.Add(new Ambiance_Label
+            {
+                AutoSize = true,
+                Location = new System.Drawing.Point(12, 48 * i + 12),
+                Name = "label" + i,
+                Size = new System.Drawing.Size(54, 20),
+                Text = ("Test " + i + " : ")
+            });
+            currentPanel.Controls.Add(new Ambiance_Separator
+            {
+                Location = new System.Drawing.Point(4, 48 * i + 42),
+                Name = "separator" + i,
+                Size = new System.Drawing.Size(139, 10)
+            });
+            currentPanel.Controls.Add(new Ambiance_TextBox
+            {
+                Location = new System.Drawing.Point(73, 48 * i + 9),
+                Name = "grade",
+                Size = new System.Drawing.Size(69, 28),
+                Text = ("0"),
+                MaxLength = 3,
+                TextAlignment = HorizontalAlignment.Center
+            });
+        }
+
+        private void ChangeGrade(TabPage tab, SchoolClass currentClass, User currentUser, Ambiance_Panel currentPanel)
+        {
+            List<int> currentGrades = currentClass.grades[currentUser].grades;
+            bool errorShown = false;
+            Control[] gradeBoxs = currentPanel.Controls.Find("grade", false);
+            for (int i = 0; i < currentGrades.Count; i++)
+            {
+                try
+                {
+                    if (Int32.Parse(gradeBoxs[i].Text) <= 100 && Int32.Parse(((Ambiance_TextBox)gradeBoxs[i]).Text) >= 0)
+                        currentGrades[i] = Int32.Parse(((Ambiance_TextBox)gradeBoxs[i]).Text);
+                    else
+                        if (!errorShown)
+                    {
+                        MessageBox.Show("Grades must be 0-100");
+                        errorShown = false;
+                    }
+                }
+                catch (Exception)
+                {
+                    if (!errorShown)
+                    {
+                        MessageBox.Show("Grades can be numbers only!");
+                        errorShown = true;
+                    }
+                }
+            }
+            if (!errorShown)
+            {
+                MessageBox.Show("Grades Successfully Updated");
+            }
+            Database.SaveClass(currentClass);
+            tab.Controls.Find("studentGPALabel", false)[0].Text = "GPA : " + String.Format("{0:0.00}", currentUser.CalculateGPA());
+        }
+
         private void createClassButton_Click(object sender, EventArgs e)
         {
             CreateClassPage ccp = new CreateClassPage();
             ccp.Show();
+            ccp.SetOpeningPage(openPage);
             this.Close();
         }
 
@@ -293,6 +399,7 @@ namespace LearningPlatform
         {
             CreateStudentForm csf = new CreateStudentForm();
             csf.Show();
+            csf.SetOpeningPage(openPage);
             this.Close();
         }
 

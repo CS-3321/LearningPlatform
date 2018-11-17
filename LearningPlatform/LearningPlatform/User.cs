@@ -41,31 +41,34 @@ namespace LearningPlatform
             classes += _className + "@";
         }
 
-        public double CalculateGPA()
+        public float CalculateGPA()
         {
             if (isTeacher || classes.Length == 0)
                 return -1; // return -1 if trying to calculate the gpa of a teacher
             string[] allClasses = classes.Substring(0, classes.Length - 1).Split('@');
             int averagePerClass = 0;
-            double totalGpa = 0;
+            float totalGpa = 0;
+            SchoolClass tempClass = null;
+            float classCount = allClasses.Length;
             foreach (string className in allClasses)
             {
-                #region Debug
-                Debug.Print(className);
-                #endregion
-                SchoolClass tempClass = Database.classes[className];
-                averagePerClass = tempClass.grades[this].GetAverage();
-                if (averagePerClass > 89)
-                    totalGpa += 4;
-                else if (averagePerClass > 79)
-                    totalGpa += 3;
-                else if (averagePerClass > 69)
-                    totalGpa += 2;
-                else if (averagePerClass > 59)
-                    totalGpa += 1;
+                tempClass = Database.classes[className];
+                if (tempClass.grades.Count > 0)
+                {
+                    averagePerClass = tempClass.grades[this].GetAverage();
+                    if (averagePerClass > 89)
+                        totalGpa += 4.0f;
+                    else if (averagePerClass > 79)
+                        totalGpa += 3.0f;
+                    else if (averagePerClass > 69)
+                        totalGpa += 2.0f;
+                    else if (averagePerClass > 59)
+                        totalGpa += 1.0f;
+                }
+                else
+                    classCount--;
             }
-
-            return totalGpa / allClasses.Length;
+            return totalGpa / classCount;
         }
         public string Encoded() // stores all data in a single string
         {

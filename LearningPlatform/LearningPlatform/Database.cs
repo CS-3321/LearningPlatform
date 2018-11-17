@@ -150,7 +150,7 @@ namespace LearningPlatform
             return true;
         }
 
-        private static void SaveUsers()
+        public static void SaveUsers()
         {
             string _allUsers = "";
             File.Delete(userFileName);
@@ -160,7 +160,7 @@ namespace LearningPlatform
             }
             File.AppendAllText(userFileName, _allUsers);
         }
-        private static void SaveClass(SchoolClass _currentClass)
+        public static void SaveClass(SchoolClass _currentClass)
         {
             string classFileLocation = String.Format(@"{0}\" + _currentClass.classID + ".txt", Application.StartupPath);
             File.Delete(classFileLocation);

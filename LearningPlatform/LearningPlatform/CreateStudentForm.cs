@@ -12,6 +12,8 @@ namespace LearningPlatform
 {
     public partial class CreateStudentForm : Form
     {
+        Form1 openPage = null;
+
         public CreateStudentForm()
         {
             InitializeComponent();
@@ -19,6 +21,11 @@ namespace LearningPlatform
             {
                 ClassComboBox.Items.Add(currentClass.className);
             }
+        }
+
+        public void SetOpeningPage(Form1 _openPage)
+        {
+            openPage = _openPage;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -63,6 +70,7 @@ namespace LearningPlatform
         {
             MainPage main = new MainPage();
             main.Show();
+            main.SetOpeningPage(openPage);
             this.Close();
         }
     }
