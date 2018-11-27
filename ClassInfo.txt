@@ -1,0 +1,40 @@
+CreateClassPage
+- openingPage : Form1
+
+<<constructor>> + CreateClassPage
++ SetOpeningPage(Form1 _openPage) : void
+- cancelButton_Click(object sender, EventArgs e) : void
+- CreateClassButton_Click(object sender, EventArgs e) : void
+- CloseThis() : void
+
+CreateStudentForm
+- openingPage : Form1
+
+<<constructor>> + CreateStudentForm
++ SetOpeningPage(Form1 _openPage) : void
+- cancelButton_Click(object sender, EventArgs e) : void
+- AddStudentButton_Click(object sender, EventArgs e) : void
+- CloseThis() : void
+
+Database
++ users : Dictonary<string, User>
++ classes : Dictonary<string, SchoolClass>
++ classNames : List<string>
++ isTeacher : boolean
++ currentUser : User
++ currentClasses : List<SchoolClass>
++ userFileName : string
++ classFileName : string
+
+<<constructor>> + Database
++ CreateFiles() : void
++ AddTeacher(string _user, string _pass, string _fName, string _lName) : boolean
++ AddSchoolClass(string _className, string _classID) : boolean
++ AddStudent(string _firstName, string _lastName, string _studentID, string _studentPass, SchoolClass _class) : boolean
++ SaveUsers() : void
++ SaveClass(SchoolClass _currentClass) : void
++ CheckTeacherLogin(string _user, string _pass) : boolean
++ CheckStudentLogin(string _user, string _pass) : boolean
++ SetTeacher(string _user) : void
++ SetStudent(string _user) : void
++ SetCurrentClasses(): void
